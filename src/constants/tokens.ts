@@ -82,6 +82,7 @@ const USDC_POLYGON_MUMBAI = new Token(
   'USDC',
   'USD//C'
 )
+const USDC_KROMA = new Token(SupportedChainId.KROMA, '0x57f367db18ceb357a4edc465946fb29836087bcd', 18, 'USDC', 'USD//C')
 export const PORTAL_USDC_CELO = new Token(
   SupportedChainId.CELO,
   '0x37f750B7cC259A2f741AF45294f6a16572CF5cAd',
@@ -308,6 +309,21 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'CEUR',
   'Celo Euro Stablecoin'
 )
+// export const TA_KROMA = new Token(
+//   SupportedChainId.KROMA,
+//   '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
+//   18,
+//   'TA',
+//   'Token A'
+// )
+
+// export const TB_KROMA = new Token(
+//   SupportedChainId.KROMA,
+//   '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
+//   18,
+//   'TB',
+//   'Token B'
+// )
 
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
@@ -375,10 +391,21 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'CELO',
     'Celo native asset'
   ),
+  [SupportedChainId.KROMA]: new Token(
+    SupportedChainId.KROMA,
+    '0x4200000000000000000000000000000000000001',
+    18,
+    'ETH',
+    'Kroma Wrapped ETH'
+  ),
 }
 
 export function isCelo(chainId: number): chainId is SupportedChainId.CELO | SupportedChainId.CELO_ALFAJORES {
   return chainId === SupportedChainId.CELO_ALFAJORES || chainId === SupportedChainId.CELO
+}
+
+export function isKroma(chainId: number): chainId is SupportedChainId.KROMA {
+  return chainId === SupportedChainId.KROMA
 }
 
 function getCeloNativeCurrency(chainId: number) {
@@ -457,5 +484,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
+    [SupportedChainId.KROMA]: USDC_KROMA.address,
   },
 }

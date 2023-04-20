@@ -120,6 +120,7 @@
     "yarn-deduplicate": "^6.0.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@coinbase/wallet-sdk": "^3.3.0",
     "@fontsource/ibm-plex-mono": "^4.5.1",
     "@fontsource/inter": "^4.5.1",
