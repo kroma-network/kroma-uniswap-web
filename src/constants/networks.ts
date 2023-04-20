@@ -87,6 +87,10 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     // "Safe" URLs
     `https://alfajores-forno.celo-testnet.org`,
   ],
+  [SupportedChainId.KROMA]: [
+    // "Safe" URLs
+    `https://api.sepolia.kroma.network`,
+  ],
 }
 
 /**
@@ -134,4 +138,5 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
+  [SupportedChainId.KROMA]: ['https://api.sepolia.kroma.network', ...FALLBACK_URLS[SupportedChainId.KROMA]],
 }

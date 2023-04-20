@@ -5,11 +5,12 @@ import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'as
 import celoLogo from 'assets/svg/celo_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
+import kromaSepoliaLogo from 'assets/images/kroma-sepolia-logo.png'
 import ms from 'ms.macro'
 import { darkTheme } from 'theme/colors'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, OPTIMISM_LIST } from './lists'
+import { ARBITRUM_LIST, CELO_LIST, KROMA_LIST, OPTIMISM_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -49,7 +50,9 @@ export interface L2ChainInfo extends BaseChainInfo {
   readonly defaultListUrl: string
 }
 
-type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
+type ChainInfoMap = {
+  readonly [chainId: number]: L1ChainInfo | L2ChainInfo
+} & {
   readonly [chainId in SupportedL2ChainId]: L2ChainInfo
 } & { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
@@ -134,7 +137,11 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: optimismLogoUrl,
     statusPage: 'https://optimism.io/status',
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
-    nativeCurrency: { name: 'Optimism Goerli Ether', symbol: 'görOpETH', decimals: 18 },
+    nativeCurrency: {
+      name: 'Optimism Goerli Ether',
+      symbol: 'görOpETH',
+      decimals: 18,
+    },
     color: darkTheme.chain_420,
   },
   [SupportedChainId.ARBITRUM_ONE]: {
@@ -164,7 +171,11 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: arbitrumLogoUrl,
     defaultListUrl: ARBITRUM_LIST,
     helpCenterUrl: 'https://help.uniswap.org/en/collections/3137787-uniswap-on-arbitrum',
-    nativeCurrency: { name: 'Rinkeby Arbitrum Ether', symbol: 'rinkArbETH', decimals: 18 },
+    nativeCurrency: {
+      name: 'Rinkeby Arbitrum Ether',
+      symbol: 'rinkArbETH',
+      decimals: 18,
+    },
     color: darkTheme.chain_421611,
   },
   [SupportedChainId.POLYGON]: {
@@ -190,7 +201,11 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://info.uniswap.org/#/polygon/',
     label: 'Polygon Mumbai',
     logoUrl: polygonMaticLogo,
-    nativeCurrency: { name: 'Polygon Mumbai Matic', symbol: 'mMATIC', decimals: 18 },
+    nativeCurrency: {
+      name: 'Polygon Mumbai Matic',
+      symbol: 'mMATIC',
+      decimals: 18,
+    },
   },
   [SupportedChainId.CELO]: {
     networkType: NetworkType.L1,
@@ -216,6 +231,18 @@ const CHAIN_INFO: ChainInfoMap = {
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
     defaultListUrl: CELO_LIST,
+  },
+  [SupportedChainId.KROMA]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://kroma.network/bridge',
+    docs: 'https://docs.kroma.network',
+    explorer: 'https://blockscout.sepolia.kroma.network/',
+    infoLink: '',
+    label: 'Sepolia Kroma Testnet',
+    logoUrl: kromaSepoliaLogo,
+    nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+    defaultListUrl: KROMA_LIST,
   },
 }
 
