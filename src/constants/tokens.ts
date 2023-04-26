@@ -309,21 +309,22 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'CEUR',
   'Celo Euro Stablecoin'
 )
-// export const TA_KROMA = new Token(
-//   SupportedChainId.KROMA,
-//   '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
-//   18,
-//   'TA',
-//   'Token A'
-// )
 
-// export const TB_KROMA = new Token(
-//   SupportedChainId.KROMA,
-//   '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
-//   18,
-//   'TB',
-//   'Token B'
-// )
+export const TA_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
+  18,
+  'TA',
+  'Token A'
+)
+
+export const TB_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
+  18,
+  'TB',
+  'Token B'
+)
 
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),

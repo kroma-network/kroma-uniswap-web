@@ -23,7 +23,7 @@ import {
   renBTC,
   rETH2,
   sETH2,
-  SWISE,
+  SWISE, TA_KROMA, TB_KROMA,
   TRIBE,
   USDC_ARBITRUM,
   USDC_MAINNET,
@@ -39,7 +39,7 @@ import {
   WBTC_POLYGON,
   WETH_POLYGON,
   WETH_POLYGON_MUMBAI,
-  WRAPPED_NATIVE_CURRENCY,
+  WRAPPED_NATIVE_CURRENCY
 } from './tokens'
 
 type ChainTokenList = {
@@ -188,6 +188,8 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KROMA]: [
     nativeOnChain(SupportedChainId.KROMA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA] as Token,
+    TA_KROMA,
+    TB_KROMA,
   ],
 }
 
