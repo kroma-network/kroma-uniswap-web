@@ -16,13 +16,17 @@ export enum RouterPreference {
 
 const routers = new Map<ChainId, AlphaRouter>()
 function getRouter(chainId: ChainId): AlphaRouter {
+  console.log("[pool getRouter] chainId, routers", chainId, routers)
   const router = routers.get(chainId)
   if (router) return router
 
   const supportedChainId = toSupportedChainId(chainId)
+  console.log("[pool getRouter] supportedChainId", supportedChainId)
   if (supportedChainId) {
     const provider = RPC_PROVIDERS[supportedChainId]
+    console.log("[pool getRouter] provider", provider)
     const router = new AlphaRouter({ chainId, provider })
+    console.log("[pool getRouter] router", router)
     routers.set(chainId, router)
     return router
   }
@@ -103,9 +107,12 @@ export const routingApi = createApi({
               amount,
               type,
             })
+            console.log("[pool query] query", args, query)
             result = await fetch(`quote?${query}`)
           } else {
+            console.log("[pool query] getRouter start")
             const router = getRouter(args.tokenInChainId)
+            console.log("[pool query] getRouter", args, router)
             result = await getClientSideQuote(
               args,
               router,
@@ -114,7 +121,7 @@ export const routingApi = createApi({
               CLIENT_PARAMS
             )
           }
-
+          console.log("[pool query] result data", result.data)
           return { data: result.data as GetQuoteResult }
         } catch (e) {
           // TODO: fall back to client-side quoter when auto router fails.

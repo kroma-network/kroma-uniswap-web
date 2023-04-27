@@ -6,7 +6,7 @@ import { RouterPreference } from 'state/routing/slice'
 import { useRoutingAPITrade } from 'state/routing/useRoutingAPITrade'
 
 import { SupportedChainId } from '../constants/chains'
-import { CUSD_CELO, DAI_OPTIMISM, USDC_ARBITRUM, USDC_MAINNET, USDC_POLYGON } from '../constants/tokens'
+import { CUSD_CELO, DAI_OPTIMISM, USDC_ARBITRUM, USDC_KROMA, USDC_MAINNET, USDC_POLYGON } from '../constants/tokens'
 
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
@@ -16,6 +16,8 @@ const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {
   [SupportedChainId.OPTIMISM]: CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10_000e18),
   [SupportedChainId.POLYGON]: CurrencyAmount.fromRawAmount(USDC_POLYGON, 10_000e6),
   [SupportedChainId.CELO]: CurrencyAmount.fromRawAmount(CUSD_CELO, 10_000e18),
+  // [SupportedChainId.KROMA]: CurrencyAmount.fromRawAmount(CUSD_CELO, 10_000e18),
+  [SupportedChainId.KROMA]: CurrencyAmount.fromRawAmount(USDC_KROMA, 10_000e18),
 }
 
 /**
@@ -26,36 +28,52 @@ export default function useStablecoinPrice(currency?: Currency): Price<Currency,
   const chainId = currency?.chainId
 
   const amountOut = chainId ? STABLECOIN_AMOUNT_OUT[chainId] : undefined
+  console.log("[pool] amountout", amountOut)
   const stablecoin = amountOut?.currency
+  console.log("[pool] stablecoin", stablecoin)
 
   const { trade } = useRoutingAPITrade(TradeType.EXACT_OUTPUT, amountOut, currency, RouterPreference.PRICE)
   const price = useMemo(() => {
     if (!currency || !stablecoin) {
+      console.log('[pool] !currency or !stablecoin', currency, stablecoin)
       return undefined
     }
 
     // handle usdc
     if (currency?.wrapped.equals(stablecoin)) {
+      console.log("[pool] PRICE 1", new Price(stablecoin, stablecoin, '1', '1'))
       return new Price(stablecoin, stablecoin, '1', '1')
     }
 
     if (trade) {
       const { numerator, denominator } = trade.routes[0].midPrice
+      console.log('[pool] PRICE 2', new Price(currency, stablecoin, denominator, numerator))
       return new Price(currency, stablecoin, denominator, numerator)
     }
 
+      console.log('[pool] undefined', currency?.wrapped.equals(stablecoin), trade)
     return undefined
   }, [currency, stablecoin, trade])
 
   const lastPrice = useRef(price)
   if (!price || !lastPrice.current || !price.equalTo(lastPrice.current)) {
+    console.log(
+      "[pool] price, lastPrice.current, price.equalTo",
+      price,
+      lastPrice.current,
+      // price?.equalTo(lastPrice.current!)
+    );
     lastPrice.current = price
   }
+
+  console.log('[pool] lasrPrice.current', lastPrice.current)
   return lastPrice.current
 }
 
 export function useStablecoinValue(currencyAmount: CurrencyAmount<Currency> | undefined | null) {
+  console.log("[pool] currencyAmount, currency", currencyAmount?.currency)
   const price = useStablecoinPrice(currencyAmount?.currency)
+  console.log("[pool] price", price)
 
   return useMemo(() => {
     if (!price || !currencyAmount) return null

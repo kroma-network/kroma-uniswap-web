@@ -82,7 +82,7 @@ const USDC_POLYGON_MUMBAI = new Token(
   'USDC',
   'USD//C'
 )
-const USDC_KROMA = new Token(SupportedChainId.KROMA, '0x57f367db18ceb357a4edc465946fb29836087bcd', 18, 'USDC', 'USD//C')
+export const USDC_KROMA = new Token(SupportedChainId.KROMA, '0x57f367db18ceb357a4edc465946fb29836087bcd', 18, 'USDC', 'USD//C')
 export const PORTAL_USDC_CELO = new Token(
   SupportedChainId.CELO,
   '0x37f750B7cC259A2f741AF45294f6a16572CF5cAd',
@@ -324,6 +324,14 @@ export const TB_KROMA = new Token(
   18,
   'TB',
   'Token B'
+)
+
+export const TEST_USDC = new Token(
+  SupportedChainId.KROMA,
+  '0x9A274CD0229dA2d3E4bA1071F1b1b2ab4d144DdB',
+6,
+  'TUSDC',
+  'Test USDC'
 )
 
 export const UNI: { [chainId: number]: Token } = {

@@ -44,13 +44,49 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
     routerPreference,
   })
 
+  console.log("[pool] queryARgs", queryArgs)
+
   const { isLoading, isError, data, currentData } = useGetQuoteQuery(queryArgs ?? skipToken, {
     // Price-fetching is informational and costly, so it's done less frequently.
     pollingInterval: routerPreference === RouterPreference.PRICE ? ms`2m` : AVERAGE_L1_BLOCK_TIME,
   })
+  // const { isLoading, isError, data, currentData } = {
+  //   isLoading: false,
+  //   isError: false,
+  //   data: {
+  //     amount: "1000000000000000000",
+  //     amountDecimals: "1",
+  //     blockNumber: "18964019",
+  //     gasPriceWei: "25000000000",
+  //     gasUseEstimate: "193000",
+  //     gasUseEstimateQuote: "2938304709304750",
+  //     gasUseEstimateQuoteDecimals: "0.00293830470930475",
+  //     gasUseEstimateUSD: "0.00293830470930475",
+  //     quote: "609891676305994594",
+  //     quoteDecimals: "0.609891676305994594",
+  //     quoteGasAdjusted: "606953371596689843",
+  //     quoteGasAdjustedDecimals: "0.606953371596689843",
+  //     quoteId: "066d0",
+  //   },
+  //   currentData: {
+  //     amount: "1000000000000000000",
+  //     amountDecimals: "1",
+  //     blockNumber: "18964019",
+  //     gasPriceWei: "25000000000",
+  //     gasUseEstimate: "193000",
+  //     gasUseEstimateQuote: "2938304709304750",
+  //     gasUseEstimateQuoteDecimals: "0.00293830470930475",
+  //     gasUseEstimateUSD: "0.00293830470930475",
+  //     quote: "609891676305994594",
+  //     quoteDecimals: "0.609891676305994594",
+  //     quoteGasAdjusted: "606953371596689843",
+  //     quoteGasAdjustedDecimals: "0.606953371596689843",
+  //     quoteId: "066d0",}}
+  console.log("[pool] query result", data, currentData)
 
-  const quoteResult: GetQuoteResult | undefined = useIsValidBlock(Number(data?.blockNumber) || 0) ? data : undefined
+  const quoteResult: any | undefined = useIsValidBlock(Number(data?.blockNumber) || 0) ? data : undefined
 
+  console.log("[pool route] currencyIn", currencyIn, "currencyOut", currencyOut, "tradeType", tradeType, "quoteResult", quoteResult)
   const route = useMemo(
     () => computeRoutes(currencyIn, currencyOut, tradeType, quoteResult),
     [currencyIn, currencyOut, quoteResult, tradeType]
@@ -63,6 +99,7 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
 
   return useMemo(() => {
     if (!currencyIn || !currencyOut) {
+      console.log("[pool trade] currencyin out", currencyIn, currencyOut)
       return {
         state: TradeState.INVALID,
         trade: undefined,
@@ -70,6 +107,7 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
     }
 
     if (isLoading && !quoteResult) {
+      console.log("[pool trade] isLoading quoteResult", isLoading, quoteResult)
       // only on first hook render
       return {
         state: TradeState.LOADING,
@@ -89,6 +127,16 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
     }
 
     if (isError || !otherAmount || !route || route.length === 0 || !queryArgs) {
+      console.log(
+        "[pool trade] isError",
+        isError,
+        "otherAmount",
+        otherAmount,
+        "route",
+        route,
+        "queryArgs",
+        queryArgs
+      );
       return {
         state: TradeState.NO_ROUTE_FOUND,
         trade: undefined,
@@ -97,6 +145,7 @@ export function useRoutingAPITrade<TTradeType extends TradeType>(
 
     try {
       const trade = transformRoutesToTrade(route, tradeType, quoteResult?.blockNumber, gasUseEstimateUSD)
+      console.log("[pool trade] trade", trade)
       return {
         // always return VALID regardless of isFetching status
         state: isSyncing ? TradeState.SYNCING : TradeState.VALID,

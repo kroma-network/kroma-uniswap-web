@@ -50,7 +50,7 @@ interface MenuItemProps {
 
 const MenuItem = ({ href, dataTestId, id, isActive, children }: MenuItemProps) => {
   return (
-    <NavLink
+    <StyledNavLink
       to={href}
       className={isActive ? styles.activeMenuItem : styles.menuItem}
       id={id}
@@ -58,7 +58,7 @@ const MenuItem = ({ href, dataTestId, id, isActive, children }: MenuItemProps) =
       data-testid={dataTestId}
     >
       {children}
-    </NavLink>
+    </StyledNavLink>
   )
 }
 
@@ -154,5 +154,9 @@ const Navbar = () => {
     </>
   )
 }
+
+const StyledNavLink = styled(NavLink)`
+  word-break: keep-all;
+`
 
 export default Navbar
