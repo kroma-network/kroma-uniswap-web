@@ -334,6 +334,14 @@ export const TEST_USDC = new Token(
   'Test USDC'
 )
 
+export const TEST_USDT = new Token(
+  SupportedChainId.KROMA,
+  '0x99d9A15A2Dfa12FE0D9d595cD966662c6D47c00B',
+  6,
+  'TUSDT',
+  'Test USDT',
+)
+
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
@@ -404,7 +412,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     SupportedChainId.KROMA,
     '0x4200000000000000000000000000000000000001',
     18,
-    'ETH',
+    'WETH',
     'Kroma Wrapped ETH'
   ),
 }

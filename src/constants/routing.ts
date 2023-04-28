@@ -23,7 +23,7 @@ import {
   renBTC,
   rETH2,
   sETH2,
-  SWISE, TA_KROMA, TB_KROMA, TEST_USDC,
+  SWISE, TA_KROMA, TB_KROMA, TEST_USDC, TEST_USDT,
   TRIBE,
   USDC_ARBITRUM,
   USDC_MAINNET,
@@ -191,6 +191,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     TA_KROMA,
     TB_KROMA,
     TEST_USDC,
+    TEST_USDT,
   ],
 }
 

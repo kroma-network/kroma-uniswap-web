@@ -1,0 +1,260 @@
+diff --git a/node_modules/@uniswap/smart-order-router/build/main/providers/multicall-uniswap-provider.js b/node_modules/@uniswap/smart-order-router/build/main/providers/multicall-uniswap-provider.js
+index 03f3c85..33f637b 100644
+--- a/node_modules/@uniswap/smart-order-router/build/main/providers/multicall-uniswap-provider.js
++++ b/node_modules/@uniswap/smart-order-router/build/main/providers/multicall-uniswap-provider.js
+@@ -25,7 +25,10 @@ class UniswapMulticallProvider extends multicall_provider_1.IMulticallProvider {
+         this.chainId = chainId;
+         this.provider = provider;
+         this.gasLimitPerCall = gasLimitPerCall;
+-        const multicallAddress = addresses_1.UNISWAP_MULTICALL_ADDRESSES[this.chainId];
++        let multicallAddress = addresses_1.UNISWAP_MULTICALL_ADDRESSES[this.chainId];
++        if (this.chainId === 2357) {
++            multicallAddress = '0x3c92263f8598EC7ecaD403dbD05BD6795c9DBD1b'
++        }
+         if (!multicallAddress) {
+             throw new Error(`No address for Uniswap Multicall Contract on chain id: ${chainId}`);
+         }
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/providers/multicall-uniswap-provider.js b/node_modules/@uniswap/smart-order-router/build/module/providers/multicall-uniswap-provider.js
+index c7933db..511248f 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/providers/multicall-uniswap-provider.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/providers/multicall-uniswap-provider.js
+@@ -4,6 +4,7 @@ import { UniswapInterfaceMulticall__factory } from '../types/v3/factories/Uniswa
+ import { UNISWAP_MULTICALL_ADDRESSES } from '../util/addresses';
+ import { log } from '../util/log';
+ import { IMulticallProvider, } from './multicall-provider';
++import addresses_1 from '@uniswap/smart-order-router/build/main/util/addresses'
+ /**
+  * The UniswapMulticall contract has added functionality for limiting the amount of gas
+  * that each call within the multicall can consume. This is useful for operations where
+@@ -19,7 +20,10 @@ export class UniswapMulticallProvider extends IMulticallProvider {
+         this.chainId = chainId;
+         this.provider = provider;
+         this.gasLimitPerCall = gasLimitPerCall;
+-        const multicallAddress = UNISWAP_MULTICALL_ADDRESSES[this.chainId];
++        let multicallAddress = UNISWAP_MULTICALL_ADDRESSES[this.chainId];
++        if (this.chainId === 2357) {
++            multicallAddress = '0x3c92263f8598EC7ecaD403dbD05BD6795c9DBD1b'
++        }
+         if (!multicallAddress) {
+             throw new Error(`No address for Uniswap Multicall Contract on chain id: ${chainId}`);
+         }
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/providers/token-provider.js b/node_modules/@uniswap/smart-order-router/build/module/providers/token-provider.js
+index 18d7f76..94c4048 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/providers/token-provider.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/providers/token-provider.js
+@@ -37,6 +37,7 @@ export const USDC_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xFF970A61A04b1cA1
+ export const USDT_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9', 6, 'USDT', 'Tether USD');
+ export const WBTC_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, 'WBTC', 'Wrapped BTC');
+ export const DAI_ARBITRUM = new Token(ChainId.ARBITRUM_ONE, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, 'DAI', 'Dai Stablecoin');
++export const USDC_KROMA = new Token(ChainId.KROMA, '0x57f367db18ceb357a4edc465946fb29836087bcd', 18, 'USDC', 'USD//C')
+ // export const DAI_ARBITRUM_RINKEBY = new Token(
+ //   ChainId.ARBITRUM_RINKEBY,
+ //   '0x2f3C1B6A51A469051A22986aA0dDF98466cc8D3c',
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/alpha-router.js b/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/alpha-router.js
+index 17eefc9..73e9554 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/alpha-router.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/alpha-router.js
+@@ -136,7 +136,8 @@ export class AlphaRouter {
+         }
+         else {
+             this.v2SubgraphProvider = new V2SubgraphProviderWithFallBacks([
+-                new CachingV2SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://cloudflare-ipfs.com/ipns/api.uniswap.org/v1/pools/v2/${chainName}.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
++                new CachingV2SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://kroma-network.github.io/kroma-hub-web/pools.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
++                // new CachingV2SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://cloudflare-ipfs.com/ipns/api.uniswap.org/v1/pools/v2/${chainName}.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
+                 new StaticV2SubgraphProvider(chainId),
+             ]);
+         }
+@@ -145,7 +146,7 @@ export class AlphaRouter {
+         }
+         else {
+             this.v3SubgraphProvider = new V3SubgraphProviderWithFallBacks([
+-                new CachingV3SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://cloudflare-ipfs.com/ipns/api.uniswap.org/v1/pools/v3/${chainName}.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
++                new CachingV3SubgraphProvider(chainId, new URISubgraphProvider(chainId, `https://kroma-network.github.io/kroma-hub-web/pools.json`, undefined, 0), new NodeJSCache(new NodeCache({ stdTTL: 300, useClones: false }))),
+                 new StaticV3SubgraphProvider(chainId, this.v3PoolProvider),
+             ]);
+         }
+@@ -359,13 +360,16 @@ export class AlphaRouter {
+             }
+         }
+         else {
++            window.console.log('[pool alpha-router] else', this.chainId, protocolsSet)
+             if (protocolsSet.has(Protocol.V3) ||
+                 (protocolsSet.size == 0 && !V2_SUPPORTED.includes(this.chainId))) {
+                 log.info({ protocols, swapType: tradeType }, 'Routing across V3');
++                window.console.log("[pool alpha-router] getV3Quotes", 'tokenIn',tokenIn, 'tokenOut',tokenOut, 'amounts',amounts, 'percents',percents, 'quoteToken',quoteToken, 'v3gasModel',v3gasModel, 'tradeType',tradeType, 'routingConfig',routingConfig)
+                 quotePromises.push(this.getV3Quotes(tokenIn, tokenOut, amounts, percents, quoteToken, v3gasModel, tradeType, routingConfig));
+             }
+             if (protocolsSet.has(Protocol.V2)) {
+                 log.info({ protocols, swapType: tradeType }, 'Routing across V2');
++                window.console.log("[pool alpha-router] getV2Quotes", 'tokenIn',tokenIn, 'tokenOut',tokenOut, 'amounts',amounts, 'percents',percents, 'quoteToken',quoteToken, 'v3gasModel',v3gasModel, 'tradeType',tradeType, 'routingConfig',routingConfig)
+                 quotePromises.push(this.getV2Quotes(tokenIn, tokenOut, amounts, percents, quoteToken, gasPriceWei, tradeType, routingConfig));
+             }
+             /// If protocolsSet is not empty, and we specify mixedRoutes, consider them if the chain has v2 liq
+@@ -388,6 +392,7 @@ export class AlphaRouter {
+             allCandidatePools = [...allCandidatePools, candidatePools];
+         }
+         if (allRoutesWithValidQuotes.length == 0) {
++            window.console.log("[pool alpha-router] Received no vliad quotes")
+             log.info({ allRoutesWithValidQuotes }, 'Received no valid quotes');
+             return null;
+         }
+@@ -395,8 +400,11 @@ export class AlphaRouter {
+         const beforeBestSwap = Date.now();
+         const swapRouteRaw = await getBestSwapRoute(amount, percents, allRoutesWithValidQuotes, tradeType, this.chainId, routingConfig, v3gasModel);
+         if (!swapRouteRaw) {
++            window.console.log("[pool alpha-router] !swapRouteRaw")
+             return null;
+         }
++
++        window.console.log("[pool alpha-router] pass")
+         const { quote, quoteGasAdjusted, estimatedGasUsed, routes: routeAmounts, estimatedGasUsedQuoteToken, estimatedGasUsedUSD, } = swapRouteRaw;
+         // Build Trade object that represents the optimal swap.
+         const trade = buildTrade(currencyIn, currencyOut, tradeType, routeAmounts);
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/gas-models/gas-model.js b/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/gas-models/gas-model.js
+index 0a5954a..127036a 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/gas-models/gas-model.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/routers/alpha-router/gas-models/gas-model.js
+@@ -1,4 +1,4 @@
+-import { CUSD_CELO, CUSD_CELO_ALFAJORES, DAI_ARBITRUM, DAI_ARBITRUM_RINKEBY, DAI_GÖRLI, DAI_KOVAN, DAI_MAINNET, DAI_OPTIMISM, DAI_OPTIMISTIC_KOVAN, DAI_POLYGON_MUMBAI, DAI_RINKEBY_1, DAI_RINKEBY_2, DAI_ROPSTEN, USDC_ARBITRUM, USDC_ETHEREUM_GNOSIS, USDC_GÖRLI, USDC_KOVAN, USDC_MAINNET, USDC_MOONBEAM, USDC_OPTIMISM, USDC_OPTIMISTIC_KOVAN, USDC_POLYGON, USDC_ROPSTEN, USDT_ARBITRUM, USDT_ARBITRUM_RINKEBY, USDT_GÖRLI, USDT_KOVAN, USDT_MAINNET, USDT_OPTIMISM, USDT_OPTIMISTIC_KOVAN, USDT_ROPSTEN, WBTC_GÖRLI, } from '../../../providers/token-provider';
++import { CUSD_CELO, CUSD_CELO_ALFAJORES, DAI_ARBITRUM, DAI_ARBITRUM_RINKEBY, DAI_GÖRLI, DAI_KOVAN, DAI_MAINNET, DAI_OPTIMISM, DAI_OPTIMISTIC_KOVAN, DAI_POLYGON_MUMBAI, DAI_RINKEBY_1, DAI_RINKEBY_2, DAI_ROPSTEN, USDC_ARBITRUM, USDC_ETHEREUM_GNOSIS, USDC_GÖRLI, USDC_KOVAN, USDC_MAINNET, USDC_MOONBEAM, USDC_OPTIMISM, USDC_OPTIMISTIC_KOVAN, USDC_POLYGON, USDC_ROPSTEN, USDT_ARBITRUM, USDT_ARBITRUM_RINKEBY, USDT_GÖRLI, USDT_KOVAN, USDT_MAINNET, USDT_OPTIMISM, USDT_OPTIMISTIC_KOVAN, USDT_ROPSTEN, WBTC_GÖRLI, USDC_KROMA} from '../../../providers/token-provider';
+ import { ChainId } from '../../../util/chains';
+ export const usdGasTokensByChain = {
+     [ChainId.MAINNET]: [DAI_MAINNET, USDC_MAINNET, USDT_MAINNET],
+@@ -20,6 +20,7 @@ export const usdGasTokensByChain = {
+     [ChainId.CELO_ALFAJORES]: [CUSD_CELO_ALFAJORES],
+     [ChainId.GNOSIS]: [USDC_ETHEREUM_GNOSIS],
+     [ChainId.MOONBEAM]: [USDC_MOONBEAM],
++    [ChainId.KROMA]: [USDC_KROMA],
+ };
+ /**
+  * Factory for building gas models that can be used with any route to generate
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/util/addresses.js b/node_modules/@uniswap/smart-order-router/build/module/util/addresses.js
+index 053caf3..4f16fc8 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/util/addresses.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/util/addresses.js
+@@ -1,19 +1,30 @@
+ import { Token } from '@uniswap/sdk-core';
+ import { FACTORY_ADDRESS } from '@uniswap/v3-sdk';
+ import { ChainId, NETWORKS_WITH_SAME_UNISWAP_ADDRESSES } from './chains';
++import { SupportedChainId } from '../../../../../../src/constants/chains'
+ const CELO_V3_CORE_FACTORY_ADDRESSES = '0xAfE208a311B21f13EF87E33A90049fC17A7acDEc';
+ const CELO_QUOTER_ADDRESSES = '0x82825d0554fA07f7FC52Ab63c961F330fdEFa8E8';
+ const CELO_MULTICALL_ADDRESS = '0x633987602DE5C4F337e3DbF265303A1080324204';
++const KROMA_V3_CORE_FACTORY_ADDRESSES = '0xe3f13894db43e7049Ef1bdDB28a2D694E440CB13'
++const KROMA_ROUTER_ADDRESS = '0x0f41ebD03dd96AE35285F63cB3b9Eb9F30A4F99F'
++const KROMA_V3_MIGRATOR_ADDRESSES = '0xA25289b257CB1D242b5615620262D7bE0D5F1E13'
++const KROMA_MULTICALL_ADDRESS = '0x3c92263f8598EC7ecaD403dbD05BD6795c9DBD1b'
++const KROMA_QUOTER_ADDRESSES = '0x793873575C476207bF30a9c2e270EA41498b764d'
++const KROMA_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES = '0xFAA315fa8989212EeC9a3B0d3145000C3349FBd6'
++const KROMA_TICK_LENS_ADDRESSES = '0x21d5F1Ef5B316f713C7fe0F2Edd90D83532c24c3'
++
+ export const V3_CORE_FACTORY_ADDRESSES = {
+     ...constructSameAddressMap(FACTORY_ADDRESS),
+     [ChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
+     [ChainId.CELO_ALFAJORES]: CELO_V3_CORE_FACTORY_ADDRESSES,
++    [SupportedChainId.KROMA]: KROMA_V3_CORE_FACTORY_ADDRESSES,
+     // TODO: Gnosis + Moonbeam contracts to be deployed
+ };
+ export const QUOTER_V2_ADDRESSES = {
+     ...constructSameAddressMap('0x61fFE014bA17989E743c5F6cB21bF9697530B21e'),
+     [ChainId.CELO]: CELO_QUOTER_ADDRESSES,
+     [ChainId.CELO_ALFAJORES]: CELO_QUOTER_ADDRESSES,
++    [SupportedChainId.KROMA]: KROMA_QUOTER_ADDRESSES,
+     // TODO: Gnosis + Moonbeam contracts to be deployed
+ };
+ export const MIXED_ROUTE_QUOTER_V1_ADDRESSES = {
+@@ -26,14 +37,16 @@ export const UNISWAP_MULTICALL_ADDRESSES = {
+     ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984'),
+     [ChainId.CELO]: CELO_MULTICALL_ADDRESS,
+     [ChainId.CELO_ALFAJORES]: CELO_MULTICALL_ADDRESS,
++    [SupportedChainId.KROMA]: KROMA_MULTICALL_ADDRESS,
++
+     // TODO: Gnosis + Moonbeam contracts to be deployed
+ };
+ export const OVM_GASPRICE_ADDRESS = '0x420000000000000000000000000000000000000F';
+ export const ARB_GASINFO_ADDRESS = '0x000000000000000000000000000000000000006C';
+-export const TICK_LENS_ADDRESS = '0xbfd8137f7d1516D3ea5cA83523914859ec47F573';
+-export const NONFUNGIBLE_POSITION_MANAGER_ADDRESS = '0xC36442b4a4522E871399CD717aBDD847Ab11FE88';
+-export const SWAP_ROUTER_ADDRESS = '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45';
+-export const V3_MIGRATOR_ADDRESS = '0xA5644E29708357803b5A882D272c41cC0dF92B34';
++export const TICK_LENS_ADDRESS = KROMA_TICK_LENS_ADDRESSES;
++export const NONFUNGIBLE_POSITION_MANAGER_ADDRESS = KROMA_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES;
++export const SWAP_ROUTER_ADDRESS = KROMA_ROUTER_ADDRESS;
++export const V3_MIGRATOR_ADDRESS = KROMA_V3_MIGRATOR_ADDRESSES;
+ export const MULTICALL2_ADDRESS = '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696';
+ export function constructSameAddressMap(address, additionalNetworks = []) {
+     return NETWORKS_WITH_SAME_UNISWAP_ADDRESSES.concat(additionalNetworks).reduce((memo, chainId) => {
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/util/chains.js b/node_modules/@uniswap/smart-order-router/build/module/util/chains.js
+index 1ead09b..7b19059 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/util/chains.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/util/chains.js
+@@ -16,6 +16,7 @@ export var ChainId;
+     ChainId[ChainId["CELO_ALFAJORES"] = 44787] = "CELO_ALFAJORES";
+     ChainId[ChainId["GNOSIS"] = 100] = "GNOSIS";
+     ChainId[ChainId["MOONBEAM"] = 1284] = "MOONBEAM";
++    ChainId[ChainId["KROMA"] = 2357] = "KROMA";
+ })(ChainId || (ChainId = {}));
+ // WIP: Gnosis, Moonbeam
+ export const SUPPORTED_CHAINS = [
+@@ -32,6 +33,7 @@ export const SUPPORTED_CHAINS = [
+     ChainId.GÖRLI,
+     ChainId.CELO_ALFAJORES,
+     ChainId.CELO,
++    ChainId.KROMA,
+     // Gnosis and Moonbeam don't yet have contracts deployed yet
+ ];
+ export const V2_SUPPORTED = [
+@@ -40,6 +42,7 @@ export const V2_SUPPORTED = [
+     ChainId.GÖRLI,
+     ChainId.RINKEBY,
+     ChainId.ROPSTEN,
++    // ChainId.KROMA,
+ ];
+ export const HAS_L1_FEE = [
+     ChainId.OPTIMISM,
+@@ -92,6 +95,8 @@ export const ID_TO_CHAIN_ID = (id) => {
+             return ChainId.GNOSIS;
+         case 1284:
+             return ChainId.MOONBEAM;
++        case 2357:
++            return ChainId.KROMA;
+         default:
+             throw new Error(`Unknown chain id: ${id}`);
+     }
+@@ -113,6 +118,7 @@ export var ChainName;
+     ChainName["CELO_ALFAJORES"] = "celo-alfajores";
+     ChainName["GNOSIS"] = "gnosis-mainnet";
+     ChainName["MOONBEAM"] = "moonbeam-mainnet";
++    ChainName["KROMA"] = "kroma";
+ })(ChainName || (ChainName = {}));
+ export var NativeCurrencyName;
+ (function (NativeCurrencyName) {
+@@ -228,6 +234,8 @@ export const ID_TO_NETWORK_NAME = (id) => {
+             return ChainName.GNOSIS;
+         case 1284:
+             return ChainName.MOONBEAM;
++        case 2357:
++            return ChainName.KROMA;
+         default:
+             throw new Error(`Unknown chain id: ${id}`);
+     }
+@@ -282,6 +290,7 @@ export const WRAPPED_NATIVE_CURRENCY = {
+     [ChainId.CELO_ALFAJORES]: new Token(ChainId.CELO_ALFAJORES, '0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9', 18, 'CELO', 'Celo native asset'),
+     [ChainId.GNOSIS]: new Token(ChainId.GNOSIS, '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d', 18, 'WXDAI', 'Wrapped XDAI on Gnosis'),
+     [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, '0xAcc15dC74880C9944775448304B263D191c6077F', 18, 'WGLMR', 'Wrapped GLMR'),
++    [ChainId.KROMA]: new Token(ChainId.KROMA, '0x4200000000000000000000000000000000000001', 18, 'WETH', 'Kroma Wrapped ETH'),
+ };
+ function isMatic(chainId) {
+     return chainId === ChainId.POLYGON_MUMBAI || chainId === ChainId.POLYGON;
+diff --git a/node_modules/@uniswap/smart-order-router/build/module/util/gas-factory-helpers.js b/node_modules/@uniswap/smart-order-router/build/module/util/gas-factory-helpers.js
+index e245cdb..6308a98 100644
+--- a/node_modules/@uniswap/smart-order-router/build/module/util/gas-factory-helpers.js
++++ b/node_modules/@uniswap/smart-order-router/build/module/util/gas-factory-helpers.js
+@@ -63,6 +63,7 @@ export async function getHighestLiquidityV3USDPool(chainId, poolProvider) {
+         ]);
+     })
+         .value();
++    window.console.log("[pool gas-factory-helper]", chainId, poolProvider, usdPools)
+     const poolAccessor = await poolProvider.getPools(usdPools);
+     const pools = _([
+         FeeAmount.HIGH,
