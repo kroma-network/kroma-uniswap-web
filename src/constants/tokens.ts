@@ -309,21 +309,37 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'CEUR',
   'Celo Euro Stablecoin'
 )
-// export const TA_KROMA = new Token(
-//   SupportedChainId.KROMA,
-//   '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
-//   18,
-//   'TA',
-//   'Token A'
-// )
+export const TA_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
+  18,
+  'TA',
+  'Token A'
+)
 
-// export const TB_KROMA = new Token(
-//   SupportedChainId.KROMA,
-//   '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
-//   18,
-//   'TB',
-//   'Token B'
-// )
+export const TB_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
+  18,
+  'TB',
+  'Token B'
+)
+
+export const STABLE_TA_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x247A1a3C859699010E9914eF6E41942E1C561A0d',
+  18,
+  'STA',
+  'Stable Token A'
+)
+
+export const STABLE_TB_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0xEB4494349B7CF61a4d27A536bb63B2c78d8802a0',
+  18,
+  'STB',
+  'Stable Token B'
+)
 
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),

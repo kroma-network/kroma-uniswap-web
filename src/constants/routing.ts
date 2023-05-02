@@ -23,7 +23,11 @@ import {
   renBTC,
   rETH2,
   sETH2,
+  STABLE_TA_KROMA,
+  STABLE_TB_KROMA,
   SWISE,
+  TA_KROMA,
+  TB_KROMA,
   TRIBE,
   USDC_ARBITRUM,
   USDC_MAINNET,
@@ -188,6 +192,10 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KROMA]: [
     nativeOnChain(SupportedChainId.KROMA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA] as Token,
+    TA_KROMA,
+    TB_KROMA,
+    STABLE_TA_KROMA,
+    STABLE_TB_KROMA,
   ],
 }
 
