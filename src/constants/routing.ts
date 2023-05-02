@@ -30,6 +30,7 @@ import {
   TB_KROMA,
   TRIBE,
   USDC_ARBITRUM,
+  USDC_KROMA,
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
@@ -196,6 +197,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     TB_KROMA,
     STABLE_TA_KROMA,
     STABLE_TB_KROMA,
+    USDC_KROMA,
   ],
 }
 
