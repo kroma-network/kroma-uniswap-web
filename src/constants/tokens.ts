@@ -86,7 +86,7 @@ export const USDC_KROMA = new Token(
   SupportedChainId.KROMA,
   //  '0x57f367db18ceb357a4edc465946fb29836087bcd',
   '0x9A274CD0229dA2d3E4bA1071F1b1b2ab4d144DdB',
-  18,
+  6,
   'USDC',
   'USD//C'
 )
@@ -336,7 +336,7 @@ export const STABLE_TA_KROMA = new Token(
   SupportedChainId.KROMA,
   // '0x247A1a3C859699010E9914eF6E41942E1C561A0d',
   '0x26Eb9880B396239e3A868Bd36D99D9D84e0AE2cC',
-  18,
+  6,
   'STA',
   'Stable Token A'
 )
@@ -345,7 +345,7 @@ export const STABLE_TB_KROMA = new Token(
   SupportedChainId.KROMA,
   // '0xEB4494349B7CF61a4d27A536bb63B2c78d8802a0',
   '0x13C221e3cb1D36DF9BAd8c02225d78a68Bc49063',
-  18,
+  6,
   'STB',
   'Stable Token B'
 )

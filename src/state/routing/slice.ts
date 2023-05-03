@@ -22,7 +22,7 @@ function getRouter(chainId: ChainId): AlphaRouter {
   const supportedChainId = toSupportedChainId(chainId)
   if (supportedChainId) {
     const provider = RPC_PROVIDERS[supportedChainId]
-    const router = new AlphaRouter({ chainId, provider })
+    const router = new AlphaRouter({ chainId, provider: provider as any })
     routers.set(chainId, router)
     return router
   }

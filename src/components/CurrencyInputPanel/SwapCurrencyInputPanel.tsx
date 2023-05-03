@@ -311,7 +311,8 @@ export default function SwapCurrencyInputPanel({
           <FiatRow>
             <RowBetween>
               <LoadingOpacityContainer $loading={loading}>
-                <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />
+                {/* <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} /> */}
+                <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={false} />
               </LoadingOpacityContainer>
               {account ? (
                 <RowFixed style={{ height: '17px' }}>
