@@ -39,6 +39,8 @@ async function getQuote(
   const quoteCurrency = type === 'exactIn' ? currencyOut : currencyIn
   const amount = CurrencyAmount.fromRawAmount(baseCurrency, JSBI.BigInt(amountRaw))
 
+  console.log('getQuote 1111')
+
   const swapRoute = await router.route(
     amount,
     quoteCurrency,
@@ -46,6 +48,8 @@ async function getQuote(
     /*swapConfig=*/ undefined,
     config
   )
+
+  console.log('getQuote 2222')
 
   if (!swapRoute) throw new Error('Failed to generate client side quote')
 
