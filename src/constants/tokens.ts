@@ -82,14 +82,7 @@ const USDC_POLYGON_MUMBAI = new Token(
   'USDC',
   'USD//C'
 )
-export const USDC_KROMA = new Token(
-  SupportedChainId.KROMA,
-  //  '0x57f367db18ceb357a4edc465946fb29836087bcd',
-  '0x9A274CD0229dA2d3E4bA1071F1b1b2ab4d144DdB',
-  18,
-  'USDC',
-  'USD//C'
-)
+
 export const PORTAL_USDC_CELO = new Token(
   SupportedChainId.CELO,
   '0x37f750B7cC259A2f741AF45294f6a16572CF5cAd',
@@ -316,15 +309,51 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'CEUR',
   'Celo Euro Stablecoin'
 )
-export const TA_KROMA = new Token(
+
+export const WBTC_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x942bd31881D1d0F8A3737E79f0E899d8423fd9f0',
+  18,
+  'WBTC',
+  'WBT//C'
+)
+export const USDC_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x9d264003F64d8c1D5A8B087f69C6E765705d1AeA',
+  18,
+  'USDC',
+  'USD//C'
+)
+export const USDT_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x90eCF9EBA26B25d47ff33a0D90Bbd704cdCaeEDE',
+  18,
+  'USDT',
+  'USD//T'
+)
+
+export const TEST_USDC_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x9A274CD0229dA2d3E4bA1071F1b1b2ab4d144DdB',
+  18,
+  'TUSDC',
+  'USD//C'
+)
+export const TEST_USDT_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x99d9A15A2Dfa12FE0D9d595cD966662c6D47c00B',
+  18,
+  'TUSDT',
+  'USD//T'
+)
+export const TEST_TOKEN_A_KROMA = new Token(
   SupportedChainId.KROMA,
   '0x2104E3BD1cC8551EeC0c7ad10dE13da29136B19C',
   18,
   'TA',
   'Token A'
 )
-
-export const TB_KROMA = new Token(
+export const TEST_TOKEN_B_KROMA = new Token(
   SupportedChainId.KROMA,
   '0x57B5284BA55A1170b4D3e5C0d4fA22baC893B291',
   18,
@@ -332,21 +361,19 @@ export const TB_KROMA = new Token(
   'Token B'
 )
 
-export const STABLE_TA_KROMA = new Token(
+export const TEST_STABLE_TOKEN_A_KROMA = new Token(
   SupportedChainId.KROMA,
-  // '0x247A1a3C859699010E9914eF6E41942E1C561A0d',
   '0x26Eb9880B396239e3A868Bd36D99D9D84e0AE2cC',
   18,
-  'STA',
+  'TSTA',
   'Stable Token A'
 )
 
-export const STABLE_TB_KROMA = new Token(
+export const TEST_STABLE_TOKEN_B_KROMA = new Token(
   SupportedChainId.KROMA,
-  // '0xEB4494349B7CF61a4d27A536bb63B2c78d8802a0',
   '0x13C221e3cb1D36DF9BAd8c02225d78a68Bc49063',
   18,
-  'STB',
+  'TSTB',
   'Stable Token B'
 )
 
@@ -420,7 +447,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     SupportedChainId.KROMA,
     '0x4200000000000000000000000000000000000001',
     18,
-    'ETH',
+    'WETH',
     'Kroma Wrapped ETH'
   ),
 }
