@@ -312,22 +312,22 @@ export const CEUR_CELO_ALFAJORES = new Token(
 
 export const WBTC_KROMA = new Token(
   SupportedChainId.KROMA,
-  '0x942bd31881D1d0F8A3737E79f0E899d8423fd9f0',
-  18,
+  '0x080a80d05D724490b00E09016C8C4f9458787E65',
+  8,
   'WBTC',
   'WBT//C'
 )
 export const USDC_KROMA = new Token(
   SupportedChainId.KROMA,
-  '0x9d264003F64d8c1D5A8B087f69C6E765705d1AeA',
-  18,
+  '0x21B0f94B97457755D846a19b06Caf855b7f98701',
+  6,
   'USDC',
   'USD//C'
 )
 export const USDT_KROMA = new Token(
   SupportedChainId.KROMA,
-  '0x90eCF9EBA26B25d47ff33a0D90Bbd704cdCaeEDE',
-  18,
+  '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
+  6,
   'USDT',
   'USD//T'
 )
