@@ -2,7 +2,7 @@
  * List of all the networks supported by the Uniswap Interface
  */
 export enum SupportedChainId {
-  MAINNET = 1,
+  // MAINNET = 1,
   // ROPSTEN = 3,
   // RINKEBY = 4,
   // GOERLI = 5,
@@ -24,7 +24,7 @@ export enum SupportedChainId {
 }
 
 export const CHAIN_IDS_TO_NAMES = {
-  [SupportedChainId.MAINNET]: 'mainnet',
+  // [SupportedChainId.MAINNET]: 'mainnet',
   // [SupportedChainId.ROPSTEN]: 'ropsten',
   // [SupportedChainId.RINKEBY]: 'rinkeby',
   // [SupportedChainId.GOERLI]: 'goerli',
