@@ -65,23 +65,23 @@ const MenuItem = ({ href, dataTestId, id, isActive, children }: MenuItemProps) =
 const PageTabs = () => {
   const { pathname } = useLocation()
   const { chainId: connectedChainId } = useWeb3React()
-  const chainName = chainIdToBackendName(connectedChainId)
+  // const chainName = chainIdToBackendName(connectedChainId)
 
-  const isPoolActive =
-    pathname.startsWith('/pool') ||
-    pathname.startsWith('/add') ||
-    pathname.startsWith('/remove') ||
-    pathname.startsWith('/increase') ||
-    pathname.startsWith('/find')
+  // const isPoolActive =
+  //   pathname.startsWith('/pool') ||
+  //   pathname.startsWith('/add') ||
+  //   pathname.startsWith('/remove') ||
+  //   pathname.startsWith('/increase') ||
+  //   pathname.startsWith('/find')
 
-  const isNftPage = useIsNftPage()
+  // const isNftPage = useIsNftPage()
 
   return (
     <>
       <MenuItem href="/swap" isActive={pathname.startsWith('/swap')}>
         <Trans>Swap</Trans>
       </MenuItem>
-      <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
+      {/* <MenuItem href={`/tokens/${chainName.toLowerCase()}`} isActive={pathname.startsWith('/tokens')}>
         <Trans>Tokens</Trans>
       </MenuItem>
       <MenuItem dataTestId="nft-nav" href="/nfts" isActive={isNftPage}>
@@ -89,7 +89,7 @@ const PageTabs = () => {
       </MenuItem>
       <MenuItem href="/pool" id="pool-nav-link" isActive={isPoolActive}>
         <Trans>Pool</Trans>
-      </MenuItem>
+      </MenuItem> */}
     </>
   )
 }
@@ -113,17 +113,17 @@ const Navbar = () => {
                 }}
               />
             </Box>
-            {!isNftPage && (
+            {/* {!isNftPage && (
               <Box display={{ sm: 'flex', lg: 'none' }} alignSelf="center">
                 <ChainSelector leftAlign={true} />
               </Box>
-            )}
+            )} */}
             <Row gap={{ xl: '0', xxl: '8' }} display={{ sm: 'none', lg: 'flex' }}>
               <PageTabs />
             </Row>
           </Box>
           <Box className={styles.middleContainer} alignItems="flex-start">
-            <SearchBar />
+            {/* <SearchBar /> */}
           </Box>
           <Box className={styles.rightSideContainer}>
             <Row gap="12">

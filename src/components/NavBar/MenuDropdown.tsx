@@ -129,7 +129,7 @@ export const MenuDropdown = () => {
         {isOpen && (
           <NavDropdown top={{ sm: 'unset', lg: '56' }} bottom={{ sm: '56', lg: 'unset' }} right="0">
             <Column gap="16">
-              <Column paddingX="8" gap="4">
+              {/* <Column paddingX="8" gap="4">
                 <PrimaryMenuRow to="/vote" close={toggleOpen}>
                   <Icon>
                     <GovernanceIcon width={24} height={24} />
@@ -146,8 +146,8 @@ export const MenuDropdown = () => {
                     <Trans>View more analytics</Trans>
                   </PrimaryMenuRow.Text>
                 </PrimaryMenuRow>
-              </Column>
-              <Separator />
+              </Column> */}
+              {/* <Separator /> */}
               <Box
                 display="flex"
                 flexDirection={{ sm: 'row', md: 'column' }}
@@ -155,28 +155,28 @@ export const MenuDropdown = () => {
                 alignItems={{ sm: 'center', md: 'flex-start' }}
                 paddingX="8"
               >
-                <SecondaryLinkedText href="https://help.uniswap.org/en/">
+                {/* <SecondaryLinkedText href="https://help.uniswap.org/en/">
                   <Trans>Help center</Trans> ↗
+                </SecondaryLinkedText> */}
+                <SecondaryLinkedText href="https://docs.kroma.network">
+                  <Trans>Documentation</Trans>
                 </SecondaryLinkedText>
-                <SecondaryLinkedText href="https://docs.uniswap.org/">
-                  <Trans>Documentation</Trans> ↗
-                </SecondaryLinkedText>
-                <SecondaryLinkedText
+                {/* <SecondaryLinkedText
                   onClick={() => {
                     toggleOpen()
                     togglePrivacyPolicy()
                   }}
                 >
                   <Trans>Legal & Privacy</Trans> ↗
-                </SecondaryLinkedText>
-                {(isDevelopmentEnv() || isStagingEnv()) && (
+                </SecondaryLinkedText> */}
+                {/* {(isDevelopmentEnv() || isStagingEnv()) && (
                   <SecondaryLinkedText onClick={openFeatureFlagsModal}>
                     <Trans>Feature Flags</Trans>
                   </SecondaryLinkedText>
-                )}
+                )} */}
               </Box>
               <IconRow>
-                <Icon href="https://discord.com/invite/FCfyBSbCU5">
+                <Icon href="https://discord.com/invite/kroma">
                   <DiscordIconMenu
                     className={styles.hover}
                     width={24}
@@ -184,7 +184,7 @@ export const MenuDropdown = () => {
                     color={themeVars.colors.textSecondary}
                   />
                 </Icon>
-                <Icon href="https://twitter.com/Uniswap">
+                <Icon href="https://twitter.com/kroma_network">
                   <TwitterIconMenu
                     className={styles.hover}
                     width={24}
@@ -192,7 +192,7 @@ export const MenuDropdown = () => {
                     color={themeVars.colors.textSecondary}
                   />
                 </Icon>
-                <Icon href="https://github.com/Uniswap">
+                <Icon href="https://github.com/kroma-network">
                   <GithubIconMenu
                     className={styles.hover}
                     width={24}
