@@ -239,7 +239,7 @@ const CHAIN_INFO: ChainInfoMap = {
     docs: 'https://docs.kroma.network',
     explorer: 'https://blockscout.sepolia.kroma.network/',
     infoLink: '',
-    label: 'Sepolia Kroma Testnet',
+    label: 'Sepolia Kroma',
     logoUrl: kromaSepoliaLogo,
     nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
     defaultListUrl: KROMA_LIST,
