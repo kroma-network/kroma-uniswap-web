@@ -4,8 +4,8 @@ import { useMemo } from 'react'
 import { isAddress } from 'utils'
 
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
-import CeloLogo from '../../assets/svg/celo_logo.svg'
-import MaticLogo from '../../assets/svg/matic-token-icon.svg'
+// import CeloLogo from '../../assets/svg/celo_logo.svg'
+// import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { NATIVE_CHAIN_ID } from 'constants/tokens'
 // import { isCelo, NATIVE_CHAIN_ID, nativeOnChain } from '../../constants/tokens'
 

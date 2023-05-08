@@ -225,7 +225,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KROMA]: [
     nativeOnChain(SupportedChainId.KROMA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA] as Token,
-    ...(process.env.MODE !== 'prod'
+    ...(process.env.REACT_APP_MODE !== 'prod'
       ? [
           TEST_STABLE_TOKEN_A_KROMA,
           TEST_STABLE_TOKEN_B_KROMA,

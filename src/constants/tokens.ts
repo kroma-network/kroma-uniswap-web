@@ -1,7 +1,8 @@
-import { Currency, Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core'
-import invariant from 'tiny-invariant'
+// import { Currency, Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core'
+import { Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core'
+// import invariant from 'tiny-invariant'
 
-import { UNI_ADDRESS } from './addresses'
+// import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
 export const NATIVE_CHAIN_ID = 'NATIVE'
@@ -475,23 +476,23 @@ export function isKroma(chainId: number): chainId is SupportedChainId.KROMA {
 //   return chainId === SupportedChainId.POLYGON_MUMBAI || chainId === SupportedChainId.POLYGON
 // }
 
-class MaticNativeCurrency extends NativeCurrency {
-  equals(other: Currency): boolean {
-    return other.isNative && other.chainId === this.chainId
-  }
+// class MaticNativeCurrency extends NativeCurrency {
+//   equals(other: Currency): boolean {
+//     return other.isNative && other.chainId === this.chainId
+//   }
 
-  get wrapped(): Token {
-    // if (!isMatic(this.chainId)) throw new Error('Not matic')
-    const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
-    invariant(wrapped instanceof Token)
-    return wrapped
-  }
+//   get wrapped(): Token {
+//     // if (!isMatic(this.chainId)) throw new Error('Not matic')
+//     const wrapped = WRAPPED_NATIVE_CURRENCY[this.chainId]
+//     invariant(wrapped instanceof Token)
+//     return wrapped
+//   }
 
-  public constructor(chainId: number) {
-    // if (!isMatic(chainId)) throw new Error('Not matic')
-    super(chainId, 18, 'MATIC', 'Polygon Matic')
-  }
-}
+//   public constructor(chainId: number) {
+//     // if (!isMatic(chainId)) throw new Error('Not matic')
+//     super(chainId, 18, 'MATIC', 'Polygon Matic')
+//   }
+// }
 
 class ExtendedEther extends Ether {
   public get wrapped(): Token {
@@ -510,15 +511,16 @@ class ExtendedEther extends Ether {
 const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
   if (cachedNativeCurrency[chainId]) return cachedNativeCurrency[chainId]
-  let nativeCurrency: NativeCurrency | Token
+  // let nativeCurrency: NativeCurrency | Token
   // if (isMatic(chainId)) {
   //   nativeCurrency = new MaticNativeCurrency(chainId)
   // } else if (isCelo(chainId)) {
   //   nativeCurrency = getCeloNativeCurrency(chainId)
   // } else {
-  nativeCurrency = ExtendedEther.onChain(chainId)
+  // nativeCurrency = ExtendedEther.onChain(chainId)
   // }
-  return (cachedNativeCurrency[chainId] = nativeCurrency)
+  // return (cachedNativeCurrency[chainId] = nativeCurrency)
+  return (cachedNativeCurrency[chainId] = ExtendedEther.onChain(chainId))
 }
 
 export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedChainId]?: string } } = {

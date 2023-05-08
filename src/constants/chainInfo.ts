@@ -1,16 +1,17 @@
-import celoCircleLogoUrl from 'assets/images/celoCircle.png'
-import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
-import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
-import celoLogo from 'assets/svg/celo_logo.svg'
-import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
-import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
+// import celoCircleLogoUrl from 'assets/images/celoCircle.png'
+// import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
+// import polygonCircleLogoUrl from 'assets/images/polygonCircle.png'
+// import { default as arbitrumCircleLogoUrl, default as arbitrumLogoUrl } from 'assets/svg/arbitrum_logo.svg'
+// import celoLogo from 'assets/svg/celo_logo.svg'
+// import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
+// import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import kromaSepoliaLogo from 'assets/images/kroma-sepolia-logo.png'
 import ms from 'ms.macro'
-import { darkTheme } from 'theme/colors'
+// import { darkTheme } from 'theme/colors'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, CELO_LIST, KROMA_LIST, OPTIMISM_LIST } from './lists'
+// import { ARBITRUM_LIST, CELO_LIST, KROMA_LIST, OPTIMISM_LIST } from './lists'
+import { KROMA_LIST } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 

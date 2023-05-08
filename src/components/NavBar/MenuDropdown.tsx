@@ -5,21 +5,21 @@ import { useOnClickOutside } from 'hooks/useOnClickOutside'
 import { Box } from 'nft/components/Box'
 import { Column, Row } from 'nft/components/Flex'
 import {
-  BarChartIcon,
+  // BarChartIcon,
   DiscordIconMenu,
   EllipsisIcon,
   GithubIconMenu,
-  GovernanceIcon,
+  // GovernanceIcon,
   TwitterIconMenu,
 } from 'nft/components/icons'
 import { body, bodySmall } from 'nft/css/common.css'
 import { themeVars } from 'nft/css/sprinkles.css'
 import { ReactNode, useReducer, useRef } from 'react'
 import { NavLink, NavLinkProps } from 'react-router-dom'
-import { isDevelopmentEnv, isStagingEnv } from 'utils/env'
+// import { isDevelopmentEnv, isStagingEnv } from 'utils/env'
 
-import { useToggleModal } from '../../state/application/hooks'
-import { ApplicationModal } from '../../state/application/reducer'
+// import { useToggleModal } from '../../state/application/hooks'
+// import { ApplicationModal } from '../../state/application/reducer'
 import * as styles from './MenuDropdown.css'
 import { NavDropdown } from './NavDropdown'
 import { NavIcon } from './NavIcon'
@@ -80,9 +80,9 @@ const SecondaryLinkedText = ({
   )
 }
 
-const Separator = () => {
-  return <Box className={styles.Separator} />
-}
+// const Separator = () => {
+//   return <Box className={styles.Separator} />
+// }
 
 const IconRow = ({ children }: { children: ReactNode }) => {
   return <Row className={styles.IconRow}>{children}</Row>
@@ -113,8 +113,8 @@ const Icon = ({ href, children }: { href?: string; children: ReactNode }) => {
 
 export const MenuDropdown = () => {
   const [isOpen, toggleOpen] = useReducer((s) => !s, false)
-  const togglePrivacyPolicy = useToggleModal(ApplicationModal.PRIVACY_POLICY)
-  const openFeatureFlagsModal = useToggleModal(ApplicationModal.FEATURE_FLAGS)
+  // const togglePrivacyPolicy = useToggleModal(ApplicationModal.PRIVACY_POLICY)
+  // const openFeatureFlagsModal = useToggleModal(ApplicationModal.FEATURE_FLAGS)
 
   const ref = useRef<HTMLDivElement>(null)
   useOnClickOutside(ref, isOpen ? toggleOpen : undefined)
