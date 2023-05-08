@@ -30,6 +30,7 @@ import { CoinbaseWalletOption, OpenCoinbaseWalletOption } from './CoinbaseWallet
 import { InjectedOption, InstallMetaMaskOption, MetaMaskOption } from './InjectedOption'
 import PendingView from './PendingView'
 import { WalletConnectOption } from './WalletConnectOption'
+import { SupportedChainId } from 'constants/chains'
 
 const CloseIcon = styled.div`
   position: absolute;
@@ -196,7 +197,7 @@ export default function WalletModal({
 
   // Keep the network connector in sync with any active user connector to prevent chain-switching on wallet disconnection.
   useEffect(() => {
-    if (chainId && connector !== networkConnection.connector) {
+    if (chainId && connector !== networkConnection.connector && chainId === SupportedChainId.KROMA) {
       networkConnection.connector.activate(chainId)
     }
   }, [chainId, connector])

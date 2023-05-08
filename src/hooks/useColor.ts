@@ -20,7 +20,8 @@ async function getColorFromToken(token: Token): Promise<string | null> {
   const { address } = wrappedToken
   let { logoURI } = wrappedToken
   if (!logoURI) {
-    if (token.chainId !== SupportedChainId.MAINNET) {
+    if (token.chainId !== SupportedChainId.KROMA) {
+      // if (token.chainId !== SupportedChainId.MAINNET) {
       return null
     } else {
       logoURI = URIForEthToken(address)

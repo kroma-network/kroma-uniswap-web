@@ -134,7 +134,8 @@ const AuthenticatedHeader = () => {
   const {
     nativeCurrency: { symbol: nativeCurrencySymbol },
     explorer,
-  } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
+    // } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
+  } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.KROMA)
   const navigate = useNavigate()
   const closeModal = useCloseModal(ApplicationModal.WALLET_DROPDOWN)
 

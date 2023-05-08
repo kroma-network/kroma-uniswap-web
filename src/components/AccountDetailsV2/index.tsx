@@ -57,7 +57,8 @@ export const TransactionSummary = ({
 }) => {
   const { chainId = 1 } = useWeb3React()
   const tx = transactionDetails
-  const { explorer } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
+  // const { explorer } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
+  const { explorer } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.KROMA)
   const { info, receipt, hash } = tx
 
   const transactionState = useMemo(() => {

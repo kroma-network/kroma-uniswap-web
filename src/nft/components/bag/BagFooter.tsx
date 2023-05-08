@@ -102,7 +102,8 @@ export const BagFooter = ({
 
   const { balance: balanceInEth } = useWalletBalance()
   const sufficientBalance = useMemo(() => {
-    if (!connected || chainId !== SupportedChainId.MAINNET) {
+    if (!connected || chainId !== SupportedChainId.KROMA) {
+      // if (!connected || chainId !== SupportedChainId.MAINNET) {
       return undefined
     }
     return parseEther(balanceInEth).gte(totalEthPrice)
@@ -114,8 +115,10 @@ export const BagFooter = ({
     let disabled = true
     let warningText = null
 
-    if (connected && chainId !== SupportedChainId.MAINNET) {
-      handleClick = () => switchChain(connector, SupportedChainId.MAINNET)
+    // if (connected && chainId !== SupportedChainId.MAINNET) {
+    if (connected && chainId !== SupportedChainId.KROMA) {
+      // handleClick = () => switchChain(connector, SupportedChainId.MAINNET)
+      handleClick = () => switchChain(connector, SupportedChainId.KROMA)
       buttonText = <Trans>Switch networks</Trans>
       disabled = false
       warningText = <Trans>Wrong network</Trans>

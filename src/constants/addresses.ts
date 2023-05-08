@@ -34,55 +34,55 @@ const KROMA_TICK_LENS_ADDRESSES = '0x21d5F1Ef5B316f713C7fe0F2Edd90D83532c24c3'
 /* V3 Contract Addresses */
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V3_FACTORY_ADDRESS, [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISM_GOERLI,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
+    //   SupportedChainId.OPTIMISM,
+    //   SupportedChainId.OPTIMISM_GOERLI,
+    //   SupportedChainId.ARBITRUM_ONE,
+    //   SupportedChainId.ARBITRUM_RINKEBY,
+    //   SupportedChainId.POLYGON_MUMBAI,
+    //   SupportedChainId.POLYGON,
   ]),
-  [SupportedChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_V3_CORE_FACTORY_ADDRESSES,
+  // [SupportedChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_V3_CORE_FACTORY_ADDRESSES,
   [SupportedChainId.KROMA]: KROMA_V3_CORE_FACTORY_ADDRESSES,
 }
 
 export const V3_MIGRATOR_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xA5644E29708357803b5A882D272c41cC0dF92B34', [
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
+    // SupportedChainId.ARBITRUM_ONE,
+    // SupportedChainId.ARBITRUM_RINKEBY,
+    // SupportedChainId.POLYGON_MUMBAI,
+    // SupportedChainId.POLYGON,
   ]),
-  [SupportedChainId.CELO]: CELO_V3_MIGRATOR_ADDRESSES,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_V3_MIGRATOR_ADDRESSES,
+  // [SupportedChainId.CELO]: CELO_V3_MIGRATOR_ADDRESSES,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_V3_MIGRATOR_ADDRESSES,
   [SupportedChainId.KROMA]: KROMA_V3_MIGRATOR_ADDRESSES,
 }
 
 export const MULTICALL_ADDRESS: AddressMap = {
   ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984', [
-    SupportedChainId.OPTIMISM_GOERLI,
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
+    // SupportedChainId.OPTIMISM_GOERLI,
+    // SupportedChainId.OPTIMISM,
+    // SupportedChainId.POLYGON_MUMBAI,
+    // SupportedChainId.POLYGON,
   ]),
-  [SupportedChainId.ARBITRUM_ONE]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
-  [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
-  [SupportedChainId.CELO]: CELO_MULTICALL_ADDRESS,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_MULTICALL_ADDRESS,
+  // [SupportedChainId.ARBITRUM_ONE]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
+  // [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
+  // [SupportedChainId.CELO]: CELO_MULTICALL_ADDRESS,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_MULTICALL_ADDRESS,
   [SupportedChainId.KROMA]: KROMA_MULTICALL_ADDRESS,
 }
 
 export const SWAP_ROUTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISM_GOERLI,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON,
-    SupportedChainId.POLYGON_MUMBAI,
+    // SupportedChainId.OPTIMISM,
+    // SupportedChainId.OPTIMISM_GOERLI,
+    // SupportedChainId.ARBITRUM_ONE,
+    // SupportedChainId.ARBITRUM_RINKEBY,
+    // SupportedChainId.POLYGON,
+    // SupportedChainId.POLYGON_MUMBAI,
   ]),
-  [SupportedChainId.CELO]: CELO_ROUTER_ADDRESS,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_ROUTER_ADDRESS,
+  // [SupportedChainId.CELO]: CELO_ROUTER_ADDRESS,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_ROUTER_ADDRESS,
   [SupportedChainId.KROMA]: KROMA_ROUTER_ADDRESS,
 }
 
@@ -96,58 +96,58 @@ export const GOVERNANCE_ALPHA_V0_ADDRESSES: AddressMap = constructSameAddressMap
  * The older V1 governance address
  */
 export const GOVERNANCE_ALPHA_V1_ADDRESSES: AddressMap = {
-  [SupportedChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
+  // [SupportedChainId.MAINNET]: '0xC4e172459f1E7939D522503B81AFAaC1014CE6F6',
 }
 /**
  * The latest governor bravo that is currently admin of timelock
  */
 export const GOVERNANCE_BRAVO_ADDRESSES: AddressMap = {
-  [SupportedChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
+  // [SupportedChainId.MAINNET]: '0x408ED6354d4973f66138C91495F2f2FCbd8724C3',
 }
 
 export const TIMELOCK_ADDRESS: AddressMap = constructSameAddressMap('0x1a9C8182C09F50C8318d769245beA52c32BE35BC')
 
 export const MERKLE_DISTRIBUTOR_ADDRESS: AddressMap = {
-  [SupportedChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e',
+  // [SupportedChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e',
 }
 
 export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {
-  [SupportedChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8',
+  // [SupportedChainId.MAINNET]: '0xeca4B0bDBf7c55E9b7925919d03CbF8Dc82537E8',
 }
 
 export const QUOTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISM_GOERLI,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
+    // SupportedChainId.OPTIMISM,
+    // SupportedChainId.OPTIMISM_GOERLI,
+    // SupportedChainId.ARBITRUM_ONE,
+    // SupportedChainId.ARBITRUM_RINKEBY,
+    // SupportedChainId.POLYGON_MUMBAI,
+    // SupportedChainId.POLYGON,
   ]),
-  [SupportedChainId.CELO]: CELO_QUOTER_ADDRESSES,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_QUOTER_ADDRESSES,
+  // [SupportedChainId.CELO]: CELO_QUOTER_ADDRESSES,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_QUOTER_ADDRESSES,
   [SupportedChainId.KROMA]: KROMA_QUOTER_ADDRESSES,
 }
 
 export const NONFUNGIBLE_POSITION_MANAGER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xC36442b4a4522E871399CD717aBDD847Ab11FE88', [
-    SupportedChainId.OPTIMISM,
-    SupportedChainId.OPTIMISM_GOERLI,
-    SupportedChainId.ARBITRUM_ONE,
-    SupportedChainId.ARBITRUM_RINKEBY,
-    SupportedChainId.POLYGON_MUMBAI,
-    SupportedChainId.POLYGON,
+    // SupportedChainId.OPTIMISM,
+    // SupportedChainId.OPTIMISM_GOERLI,
+    // SupportedChainId.ARBITRUM_ONE,
+    // SupportedChainId.ARBITRUM_RINKEBY,
+    // SupportedChainId.POLYGON_MUMBAI,
+    // SupportedChainId.POLYGON,
   ]),
-  [SupportedChainId.CELO]: CELO_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
+  // [SupportedChainId.CELO]: CELO_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
   [SupportedChainId.KROMA]: KROMA_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
 }
 
 export const ENS_REGISTRAR_ADDRESSES: AddressMap = {
-  [SupportedChainId.MAINNET]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-  [SupportedChainId.ROPSTEN]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-  [SupportedChainId.GOERLI]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
-  [SupportedChainId.RINKEBY]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
+  // [SupportedChainId.MAINNET]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
+  // [SupportedChainId.ROPSTEN]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
+  // [SupportedChainId.GOERLI]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
+  // [SupportedChainId.RINKEBY]: '0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e',
 }
 
 export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
@@ -155,9 +155,9 @@ export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
 }
 
 export const TICK_LENS_ADDRESSES: AddressMap = {
-  [SupportedChainId.ARBITRUM_ONE]: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
-  [SupportedChainId.ARBITRUM_RINKEBY]: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
-  [SupportedChainId.CELO]: CELO_TICK_LENS_ADDRESSES,
-  [SupportedChainId.CELO_ALFAJORES]: CELO_TICK_LENS_ADDRESSES,
+  // [SupportedChainId.ARBITRUM_ONE]: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
+  // [SupportedChainId.ARBITRUM_RINKEBY]: '0xbfd8137f7d1516D3ea5cA83523914859ec47F573',
+  // [SupportedChainId.CELO]: CELO_TICK_LENS_ADDRESSES,
+  // [SupportedChainId.CELO_ALFAJORES]: CELO_TICK_LENS_ADDRESSES,
   [SupportedChainId.KROMA]: KROMA_TICK_LENS_ADDRESSES,
 }
