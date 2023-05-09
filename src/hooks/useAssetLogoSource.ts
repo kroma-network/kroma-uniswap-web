@@ -1,8 +1,23 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
-import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
+import { SupportedChainId } from 'constants/chains'
+import {
+  TEST_USDC_KROMA,
+  TEST_USDT_KROMA,
+  USDC_KROMA,
+  USDT_KROMA,
+  WBTC_KROMA,
+  WRAPPED_NATIVE_CURRENCY,
+} from 'constants/tokens'
+// import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
+import { getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
 import uriToHttp from 'lib/utils/uriToHttp'
 import { useCallback, useEffect, useState } from 'react'
 import { isAddress } from 'utils'
+import KromaWBTC from 'assets/images/kroma-wbtc.png'
+import KromaWETH from 'assets/images/kroma-weth.png'
+import KromaUSDC from 'assets/images/kroma-usdc.png'
+import KromaUSDT from 'assets/images/kroma-usdt.png'
+import KromaTNBGR from 'assets/images/kroma-tnbgr.png'
 
 const BAD_SRCS: { [tokenAddress: string]: true } = {}
 
@@ -37,13 +52,32 @@ function prioritizeLogoSources(uris: string[]) {
 function getInitialUrl(address?: string | null, chainId?: number | null, isNative?: boolean) {
   if (chainId && isNative) return getNativeLogoURI(chainId)
 
-  const networkName = chainId ? chainIdToNetworkName(chainId) : 'ethereum'
+  // const networkName = chainId ? chainIdToNetworkName(chainId) : 'ethereum'
   const checksummedAddress = isAddress(address)
-  if (checksummedAddress) {
-    return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
-  } else {
-    return undefined
+
+  if (checksummedAddress === WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA]?.address) {
+    return KromaWETH
   }
+
+  if (checksummedAddress === WBTC_KROMA.address) {
+    return KromaWBTC
+  }
+
+  if (checksummedAddress === USDC_KROMA.address || checksummedAddress === TEST_USDC_KROMA.address) {
+    return KromaUSDC
+  }
+
+  if (checksummedAddress === USDT_KROMA.address || checksummedAddress === TEST_USDT_KROMA.address) {
+    return KromaUSDT
+  }
+
+  return KromaTNBGR
+
+  // if (checksummedAddress) {
+  //   return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${checksummedAddress}/logo.png`
+  // } else {
+  //   return undefined
+  // }
 }
 
 export default function useAssetLogoSource(
