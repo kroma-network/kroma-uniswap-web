@@ -11,6 +11,7 @@ import { NATIVE_CHAIN_ID } from 'constants/tokens'
 
 type Network = 'ethereum' | 'arbitrum' | 'optimism' | 'polygon'
 
+// eslint-disable-next-line import/no-unused-modules
 export function chainIdToNetworkName(networkId: SupportedChainId): Network {
   switch (networkId) {
     // case SupportedChainId.MAINNET:

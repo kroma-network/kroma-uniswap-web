@@ -423,6 +423,7 @@ export const TagIcon = (props: SVGProps) => (
   </svg>
 )
 
+// eslint-disable-next-line import/no-unused-modules
 export const BarChartIcon = (props: SVGProps) => (
   <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path d="M12 20V10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -492,6 +493,7 @@ export const CheckMarkIcon = (props: SVGProps) => (
   </svg>
 )
 
+// eslint-disable-next-line import/no-unused-modules
 export const GovernanceIcon = (props: SVGProps) => (
   <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
