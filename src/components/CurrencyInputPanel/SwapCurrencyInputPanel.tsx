@@ -309,42 +309,42 @@ export default function SwapCurrencyInputPanel({
         </InputRow>
         {Boolean(!hideInput && !hideBalance) && (
           <FiatRow>
-            <RowBetween>
-              <LoadingOpacityContainer $loading={loading}>
-                <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />
-              </LoadingOpacityContainer>
-              {account ? (
-                <RowFixed style={{ height: '17px' }}>
-                  <ThemedText.DeprecatedBody
-                    color={theme.textSecondary}
-                    fontWeight={400}
-                    fontSize={14}
-                    style={{ display: 'inline' }}
-                  >
-                    {!hideBalance && currency && selectedCurrencyBalance ? (
-                      renderBalance ? (
-                        renderBalance(selectedCurrencyBalance)
-                      ) : (
-                        <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>
-                      )
-                    ) : null}
-                  </ThemedText.DeprecatedBody>
-                  {showMaxButton && selectedCurrencyBalance ? (
-                    <TraceEvent
-                      events={[BrowserEvent.onClick]}
-                      name={EventName.SWAP_MAX_TOKEN_AMOUNT_SELECTED}
-                      element={ElementName.MAX_TOKEN_AMOUNT_BUTTON}
-                    >
-                      <StyledBalanceMax onClick={onMax}>
-                        <Trans>Max</Trans>
-                      </StyledBalanceMax>
-                    </TraceEvent>
-                  ) : null}
-                </RowFixed>
-              ) : (
-                <span />
-              )}
-            </RowBetween>
+            {/*<RowBetween>*/}
+            {/*  <LoadingOpacityContainer $loading={loading}>*/}
+            {/*    <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />*/}
+            {/*  </LoadingOpacityContainer>*/}
+            {/*  {account ? (*/}
+            {/*    <RowFixed style={{ height: '17px' }}>*/}
+            {/*      <ThemedText.DeprecatedBody*/}
+            {/*        color={theme.textSecondary}*/}
+            {/*        fontWeight={400}*/}
+            {/*        fontSize={14}*/}
+            {/*        style={{ display: 'inline' }}*/}
+            {/*      >*/}
+            {/*        {!hideBalance && currency && selectedCurrencyBalance ? (*/}
+            {/*          renderBalance ? (*/}
+            {/*            renderBalance(selectedCurrencyBalance)*/}
+            {/*          ) : (*/}
+            {/*            <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>*/}
+            {/*          )*/}
+            {/*        ) : null}*/}
+            {/*      </ThemedText.DeprecatedBody>*/}
+            {/*      {showMaxButton && selectedCurrencyBalance ? (*/}
+            {/*        <TraceEvent*/}
+            {/*          events={[BrowserEvent.onClick]}*/}
+            {/*          name={EventName.SWAP_MAX_TOKEN_AMOUNT_SELECTED}*/}
+            {/*          element={ElementName.MAX_TOKEN_AMOUNT_BUTTON}*/}
+            {/*        >*/}
+            {/*          <StyledBalanceMax onClick={onMax}>*/}
+            {/*            <Trans>Max</Trans>*/}
+            {/*          </StyledBalanceMax>*/}
+            {/*        </TraceEvent>*/}
+            {/*      ) : null}*/}
+            {/*    </RowFixed>*/}
+            {/*  ) : (*/}
+            {/*    <span />*/}
+            {/*  )}*/}
+            {/*</RowBetween>*/}
           </FiatRow>
         )}
       </Container>
