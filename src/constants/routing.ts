@@ -3,12 +3,12 @@ import { Currency, Token } from '@uniswap/sdk-core'
 
 import { SupportedChainId } from './chains'
 import {
-  TEST_STABLE_TOKEN_A_KROMA,
-  TEST_STABLE_TOKEN_B_KROMA,
-  TEST_TOKEN_A_KROMA,
-  TEST_TOKEN_B_KROMA,
-  TEST_USDC_KROMA,
-  TEST_USDT_KROMA,
+  // TEST_STABLE_TOKEN_A_KROMA,
+  // TEST_STABLE_TOKEN_B_KROMA,
+  // TEST_TOKEN_A_KROMA,
+  // TEST_TOKEN_B_KROMA,
+  // TEST_USDC_KROMA,
+  // TEST_USDT_KROMA,
   USDC_KROMA,
   USDT_KROMA,
   WBTC_KROMA,
@@ -112,18 +112,19 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDC_KROMA,
     USDT_KROMA,
     WBTC_KROMA,
-    ...(process.env.REACT_APP_MODE !== 'prod'
-      ? [
-          TEST_USDC_KROMA,
-          TEST_USDT_KROMA,
-          TEST_TOKEN_A_KROMA,
-          TEST_TOKEN_B_KROMA,
-          TEST_STABLE_TOKEN_A_KROMA,
-          TEST_STABLE_TOKEN_B_KROMA,
-        ]
-      : []),
+    // ...(process.env.REACT_APP_MODE !== 'prod'
+    //   ? [
+    //       TEST_USDC_KROMA,
+    //       TEST_USDT_KROMA,
+    //       TEST_TOKEN_A_KROMA,
+    //       TEST_TOKEN_B_KROMA,
+    //       TEST_STABLE_TOKEN_A_KROMA,
+    //       TEST_STABLE_TOKEN_B_KROMA,
+    //     ]
+    //   : []),
   ],
 }
+
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   // [SupportedChainId.MAINNET]: {
   //   '0xF16E4d813f4DcfDe4c5b44f305c908742De84eF0': [ETH2X_FLI],
@@ -225,17 +226,16 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KROMA]: [
     nativeOnChain(SupportedChainId.KROMA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA] as Token,
-    ...(process.env.REACT_APP_MODE !== 'prod'
-      ? [
-          TEST_STABLE_TOKEN_A_KROMA,
-          TEST_STABLE_TOKEN_B_KROMA,
-          TEST_TOKEN_A_KROMA,
-          TEST_TOKEN_B_KROMA,
-          TEST_USDC_KROMA,
-          TEST_USDT_KROMA,
-        ]
-      : []),
-
+    // ...(process.env.REACT_APP_MODE !== 'prod'
+    //   ? [
+    //       TEST_STABLE_TOKEN_A_KROMA,
+    //       TEST_STABLE_TOKEN_B_KROMA,
+    //       TEST_TOKEN_A_KROMA,
+    //       TEST_TOKEN_B_KROMA,
+    //       TEST_USDC_KROMA,
+    //       TEST_USDT_KROMA,
+    //     ]
+    //   : []),
     USDC_KROMA,
     USDT_KROMA,
     WBTC_KROMA,
