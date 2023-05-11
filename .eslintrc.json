@@ -49,10 +49,9 @@
     "plugin:prettier/recommended",
     "plugin:import/typescript"
   ],
-  "plugins": ["import", "unused-imports"],
+  "plugins": ["import"],
   "rules": {
     "import/no-unused-modules": [2, { "unusedExports": true }],
-    "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
     "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "off",
