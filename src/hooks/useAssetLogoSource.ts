@@ -1,8 +1,8 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
 import { SupportedChainId } from 'constants/chains'
 import {
-  TEST_USDC_KROMA,
-  TEST_USDT_KROMA,
+  // TEST_USDC_KROMA,
+  // TEST_USDT_KROMA,
   USDC_KROMA,
   USDT_KROMA,
   WBTC_KROMA,
@@ -63,11 +63,11 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
     return KromaWBTC
   }
 
-  if (checksummedAddress === USDC_KROMA.address || checksummedAddress === TEST_USDC_KROMA.address) {
+  if (checksummedAddress === USDC_KROMA.address) {
     return KromaUSDC
   }
 
-  if (checksummedAddress === USDT_KROMA.address || checksummedAddress === TEST_USDT_KROMA.address) {
+  if (checksummedAddress === USDT_KROMA.address) {
     return KromaUSDT
   }
 
