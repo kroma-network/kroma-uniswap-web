@@ -7,12 +7,12 @@ import { SupportedChainId } from 'constants/chains'
 import useCopyClipboard from 'hooks/useCopyClipboard'
 import useStablecoinPrice from 'hooks/useStablecoinPrice'
 import useNativeCurrency from 'lib/hooks/useNativeCurrency'
-import { useProfilePageState, useSellAsset, useWalletCollections } from 'nft/hooks'
+// import { useProfilePageState, useSellAsset, useWalletCollections } from 'nft/hooks'
 import { useIsNftClaimAvailable } from 'nft/hooks/useIsNftClaimAvailable'
-import { ProfilePageStateType } from 'nft/types'
+// import { ProfilePageStateType } from 'nft/types'
 import { useCallback, useMemo } from 'react'
 import { Copy, ExternalLink, Power } from 'react-feather'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { Text } from 'rebass'
 import { useCurrencyBalanceString } from 'state/connection/hooks'
 import { useAppDispatch } from 'state/hooks'
@@ -21,7 +21,8 @@ import styled, { css } from 'styled-components/macro'
 import { ThemedText } from 'theme'
 
 import { shortenAddress } from '../../nft/utils/address'
-import { useCloseModal, useToggleModal } from '../../state/application/hooks'
+// import { useCloseModal, useToggleModal } from '../../state/application/hooks'
+import { useToggleModal } from '../../state/application/hooks'
 import { ApplicationModal } from '../../state/application/reducer'
 import { useUserHasAvailableClaim, useUserUnclaimedAmount } from '../../state/claim/hooks'
 import { ButtonEmphasis, ButtonSize, ThemeButton } from '../Button'
@@ -37,11 +38,11 @@ const WalletButton = styled(ThemeButton)`
   border: none;
 `
 
-const ProfileButton = styled(WalletButton)`
-  background: ${({ theme }) => theme.accentAction};
-  transition: ${({ theme }) => theme.transition.duration.fast} ${({ theme }) => theme.transition.timing.ease}
-    background-color;
-`
+// const ProfileButton = styled(WalletButton)`
+//   background: ${({ theme }) => theme.accentAction};
+//   transition: ${({ theme }) => theme.transition.duration.fast} ${({ theme }) => theme.transition.timing.ease}
+//     background-color;
+// `
 
 const UNIButton = styled(WalletButton)`
   background: linear-gradient(to right, #9139b0 0%, #4261d6 100%);
@@ -134,13 +135,14 @@ const AuthenticatedHeader = () => {
   const {
     nativeCurrency: { symbol: nativeCurrencySymbol },
     explorer,
-  } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
-  const navigate = useNavigate()
-  const closeModal = useCloseModal(ApplicationModal.WALLET_DROPDOWN)
+    // } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.MAINNET)
+  } = getChainInfoOrDefault(chainId ? chainId : SupportedChainId.KROMA)
+  // const navigate = useNavigate()
+  // const closeModal = useCloseModal(ApplicationModal.WALLET_DROPDOWN)
 
-  const setSellPageState = useProfilePageState((state) => state.setProfilePageState)
-  const resetSellAssets = useSellAsset((state) => state.reset)
-  const clearCollectionFilters = useWalletCollections((state) => state.clearCollectionFilters)
+  // const setSellPageState = useProfilePageState((state) => state.setProfilePageState)
+  // const resetSellAssets = useSellAsset((state) => state.reset)
+  // const clearCollectionFilters = useWalletCollections((state) => state.clearCollectionFilters)
   const isClaimAvailable = useIsNftClaimAvailable((state) => state.isClaimAvailable)
 
   const unclaimedAmount: CurrencyAmount<Token> | undefined = useUserUnclaimedAmount(account)
@@ -164,13 +166,13 @@ const AuthenticatedHeader = () => {
     return price * balance
   }, [balanceString, nativeCurrencyPrice])
 
-  const navigateToProfile = () => {
-    resetSellAssets()
-    setSellPageState(ProfilePageStateType.VIEWING)
-    clearCollectionFilters()
-    navigate('/nfts/profile')
-    closeModal()
-  }
+  // const navigateToProfile = () => {
+  //   resetSellAssets()
+  //   setSellPageState(ProfilePageStateType.VIEWING)
+  //   clearCollectionFilters()
+  //   navigate('/nfts/profile')
+  //   closeModal()
+  // }
 
   return (
     <AuthenticatedHeaderWrapper>
@@ -207,9 +209,9 @@ const AuthenticatedHeader = () => {
           </Text>
           <USDText>${amountUSD.toFixed(2)} USD</USDText>
         </BalanceWrapper>
-        <ProfileButton onClick={navigateToProfile} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
+        {/* <ProfileButton onClick={navigateToProfile} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
           <Trans>View and sell NFTs</Trans>
-        </ProfileButton>
+        </ProfileButton> */}
         {isUnclaimed && (
           <UNIButton onClick={openClaimModal} size={ButtonSize.medium} emphasis={ButtonEmphasis.medium}>
             <Trans>Claim</Trans> {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} <Trans>reward</Trans>

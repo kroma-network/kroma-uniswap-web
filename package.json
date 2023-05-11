@@ -18,7 +18,9 @@
     "i18n:pseudo": "lingui extract --locale pseudo && lingui compile",
     "prepare": "yarn contracts:compile && yarn graphql:fetch && yarn graphql:generate && yarn i18n:compile",
     "start": "craco start",
-    "build": "craco build",
+    "build:dev": "env-cmd -f .env.development craco build",
+    "build:staging": "env-cmd -f .env.staging craco build",
+    "build:prod": "env-cmd -f .env.production craco build",
     "serve": "serve build -l 3000",
     "deduplicate": "yarn-deduplicate --strategy=highest",
     "lint": "yarn eslint .",
@@ -120,6 +122,7 @@
     "yarn-deduplicate": "^6.0.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
     "@coinbase/wallet-sdk": "^3.3.0",
     "@fontsource/ibm-plex-mono": "^4.5.1",
     "@fontsource/inter": "^4.5.1",

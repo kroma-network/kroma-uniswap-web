@@ -12,9 +12,13 @@ const ROLL_LIST = 'https://app.tryroll.com/tokens.json'
 const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
 const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 
+// eslint-disable-next-line import/no-unused-modules
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
+// eslint-disable-next-line import/no-unused-modules
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
+// eslint-disable-next-line import/no-unused-modules
 export const CELO_LIST = 'https://celo-org.github.io/celo-token-list/celo.tokenlist.json'
+export const KROMA_LIST = 'https://kroma-network.github.io/kroma-hub-web/tokens.json'
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST, UNI_UNSUPPORTED_LIST]
 
@@ -34,6 +38,7 @@ export const DEFAULT_INACTIVE_LIST_URLS: string[] = [
   ARBITRUM_LIST,
   OPTIMISM_LIST,
   CELO_LIST,
+  KROMA_LIST,
   ...UNSUPPORTED_LIST_URLS,
 ]
 

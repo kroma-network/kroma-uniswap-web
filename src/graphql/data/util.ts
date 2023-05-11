@@ -34,22 +34,24 @@ export function isPricePoint(p: PricePoint | null): p is PricePoint {
 }
 
 export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: Chain } = {
-  [SupportedChainId.MAINNET]: 'ETHEREUM',
-  [SupportedChainId.GOERLI]: 'ETHEREUM_GOERLI',
-  [SupportedChainId.POLYGON]: 'POLYGON',
-  [SupportedChainId.POLYGON_MUMBAI]: 'POLYGON',
-  [SupportedChainId.CELO]: 'CELO',
-  [SupportedChainId.CELO_ALFAJORES]: 'CELO',
-  [SupportedChainId.ARBITRUM_ONE]: 'ARBITRUM',
-  [SupportedChainId.ARBITRUM_RINKEBY]: 'ARBITRUM',
-  [SupportedChainId.OPTIMISM]: 'OPTIMISM',
-  [SupportedChainId.OPTIMISM_GOERLI]: 'OPTIMISM',
+  // [SupportedChainId.MAINNET]: 'ETHEREUM',
+  // [SupportedChainId.GOERLI]: 'ETHEREUM_GOERLI',
+  // [SupportedChainId.POLYGON]: 'POLYGON',
+  // [SupportedChainId.POLYGON_MUMBAI]: 'POLYGON',
+  // [SupportedChainId.CELO]: 'CELO',
+  // [SupportedChainId.CELO_ALFAJORES]: 'CELO',
+  // [SupportedChainId.ARBITRUM_ONE]: 'ARBITRUM',
+  // [SupportedChainId.ARBITRUM_RINKEBY]: 'ARBITRUM',
+  // [SupportedChainId.OPTIMISM]: 'OPTIMISM',
+  // [SupportedChainId.OPTIMISM_GOERLI]: 'OPTIMISM',
+  // [SupportedChainId.KROMA]: 'KROMA',
 }
 
 export function chainIdToBackendName(chainId: number | undefined) {
   return chainId && CHAIN_ID_TO_BACKEND_NAME[chainId]
     ? CHAIN_ID_TO_BACKEND_NAME[chainId]
-    : CHAIN_ID_TO_BACKEND_NAME[SupportedChainId.MAINNET]
+    : // : CHAIN_ID_TO_BACKEND_NAME[SupportedChainId.MAINNET]
+      CHAIN_ID_TO_BACKEND_NAME[SupportedChainId.KROMA]
 }
 
 const URL_CHAIN_PARAM_TO_BACKEND: { [key: string]: Chain } = {
@@ -65,11 +67,12 @@ export function validateUrlChainParam(chainName: string | undefined) {
 }
 
 export const CHAIN_NAME_TO_CHAIN_ID: { [key: string]: SupportedChainId } = {
-  ETHEREUM: SupportedChainId.MAINNET,
-  POLYGON: SupportedChainId.POLYGON,
-  CELO: SupportedChainId.CELO,
-  ARBITRUM: SupportedChainId.ARBITRUM_ONE,
-  OPTIMISM: SupportedChainId.OPTIMISM,
+  // ETHEREUM: SupportedChainId.MAINNET,
+  // POLYGON: SupportedChainId.POLYGON,
+  // CELO: SupportedChainId.CELO,
+  // ARBITRUM: SupportedChainId.ARBITRUM_ONE,
+  // OPTIMISM: SupportedChainId.OPTIMISM,
+  KROMA: SupportedChainId.KROMA,
 }
 
 export const BACKEND_CHAIN_NAMES: Chain[] = ['ETHEREUM', 'POLYGON', 'OPTIMISM', 'ARBITRUM', 'CELO']
@@ -83,7 +86,8 @@ export function isValidBackendChainName(chainName: string | undefined): chainNam
 }
 
 export function getTokenDetailsURL(address: string, chainName?: Chain, chainId?: number) {
-  if (address === ZERO_ADDRESS && chainId && chainId === SupportedChainId.MAINNET) {
+  // if (address === ZERO_ADDRESS && chainId && chainId === SupportedChainId.MAINNET) {
+  if (address === ZERO_ADDRESS && chainId && chainId === SupportedChainId.KROMA) {
     return `/tokens/${CHAIN_ID_TO_BACKEND_NAME[chainId].toLowerCase()}/${NATIVE_CHAIN_ID}`
   } else if (chainName) {
     return `/tokens/${chainName.toLowerCase()}/${address}`

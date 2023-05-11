@@ -1,0 +1,68 @@
+name: deploy to dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: dev
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ap-northeast-2
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js 14.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Yarn Cache
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+            
+      - name: Install Dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build
+        run: yarn build:dev
+
+      - name: Cache node modules
+        id: node-cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Delete previous files under 'static'
+        run: |
+          aws s3 rm s3://${{ secrets.S3_BUCKET_NAME }}/ --recursive --exclude "*" --include "static/css/*"
+          aws s3 rm s3://${{ secrets.S3_BUCKET_NAME }}/ --recursive --exclude "*" --include "static/js/*"
+          aws s3 rm s3://${{ secrets.S3_BUCKET_NAME }}/ --recursive --exclude "*" --include "static/media/*"
+
+      - name: Deploy
+        run: |
+          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/ --region ap-northeast-2 --metadata 'Cache-Control=max-age=31536000' --metadata-directive REPLACE --include '*' --exclude 'static/*'
+          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/ --region ap-northeast-2 --metadata 'Cache-Control=max-age=31536000' --metadata-directive REPLACE --cache-control max-age=31536000 --exclude '*' --include 'static/*'
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"

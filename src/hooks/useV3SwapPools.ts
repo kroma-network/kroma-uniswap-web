@@ -1,7 +1,7 @@
 import { Currency, Token } from '@uniswap/sdk-core'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
-import { useWeb3React } from '@web3-react/core'
-import { SupportedChainId } from 'constants/chains'
+// import { useWeb3React } from '@web3-react/core'
+// import { SupportedChainId } from 'constants/chains'
 import { useMemo } from 'react'
 
 import { useAllCurrencyCombinations } from './useAllCurrencyCombinations'
@@ -19,27 +19,33 @@ export function useV3SwapPools(
   pools: Pool[]
   loading: boolean
 } {
-  const { chainId } = useWeb3React()
+  // const { chainId } = useWeb3React()
 
   const allCurrencyCombinations = useAllCurrencyCombinations(currencyIn, currencyOut)
 
   const allCurrencyCombinationsWithAllFees: [Token, Token, FeeAmount][] = useMemo(
     () =>
       allCurrencyCombinations.reduce<[Token, Token, FeeAmount][]>((list, [tokenA, tokenB]) => {
-        return chainId === SupportedChainId.MAINNET
-          ? list.concat([
-              [tokenA, tokenB, FeeAmount.LOW],
-              [tokenA, tokenB, FeeAmount.MEDIUM],
-              [tokenA, tokenB, FeeAmount.HIGH],
-            ])
-          : list.concat([
-              [tokenA, tokenB, FeeAmount.LOWEST],
-              [tokenA, tokenB, FeeAmount.LOW],
-              [tokenA, tokenB, FeeAmount.MEDIUM],
-              [tokenA, tokenB, FeeAmount.HIGH],
-            ])
+        return list.concat([
+          [tokenA, tokenB, FeeAmount.LOW],
+          [tokenA, tokenB, FeeAmount.MEDIUM],
+          [tokenA, tokenB, FeeAmount.HIGH],
+        ])
+        // return chainId === SupportedChainId.MAINNET
+        //   ? list.concat([
+        //       [tokenA, tokenB, FeeAmount.LOW],
+        //       [tokenA, tokenB, FeeAmount.MEDIUM],
+        //       [tokenA, tokenB, FeeAmount.HIGH],
+        //     ])
+        //   : list.concat([
+        //       [tokenA, tokenB, FeeAmount.LOWEST],
+        //       [tokenA, tokenB, FeeAmount.LOW],
+        //       [tokenA, tokenB, FeeAmount.MEDIUM],
+        //       [tokenA, tokenB, FeeAmount.HIGH],
+        //     ])
       }, []),
-    [allCurrencyCombinations, chainId]
+    // [allCurrencyCombinations, chainId]
+    [allCurrencyCombinations]
   )
 
   const pools = usePools(allCurrencyCombinationsWithAllFees)
