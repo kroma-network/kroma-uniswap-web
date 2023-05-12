@@ -28,6 +28,7 @@ import CommonBases from './CommonBases'
 import { CurrencyRow, formatAnalyticsEventProperties } from './CurrencyList'
 import CurrencyList from './CurrencyList'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
+import { USDC_KROMA, USDT_KROMA, WBTC_KROMA } from '../../constants/tokens'
 
 const ContentWrapper = styled(Column)`
   background-color: ${({ theme }) => theme.backgroundSurface};
@@ -113,11 +114,14 @@ export function CurrencySearch({
   const searchCurrencies: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()
 
+    const kromaTokens = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
     const tokens = filteredSortedTokens.filter((t) => !(t.equals(wrapped) || (disableNonToken && t.isNative)))
     const natives = (disableNonToken || native.equals(wrapped) ? [wrapped] : [native, wrapped]).filter(
       (n) => n.symbol?.toLowerCase()?.indexOf(s) !== -1 || n.name?.toLowerCase()?.indexOf(s) !== -1
     )
-    return [...natives, ...tokens]
+
+    // return [...natives, ...tokens]
+    return [...natives, ...kromaTokens]
   }, [debouncedQuery, filteredSortedTokens, wrapped, disableNonToken, native])
 
   const handleCurrencySelect = useCallback(

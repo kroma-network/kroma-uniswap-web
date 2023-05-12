@@ -316,21 +316,21 @@ export const WBTC_KROMA = new Token(
   '0x080a80d05D724490b00E09016C8C4f9458787E65',
   8,
   'WBTC',
-  'WBT//C'
+  'Wrapped Bitcoin'
 )
 export const USDC_KROMA = new Token(
   SupportedChainId.KROMA,
   '0x21B0f94B97457755D846a19b06Caf855b7f98701',
   6,
   'USDC',
-  'USD//C'
+  'USD Coin'
 )
 export const USDT_KROMA = new Token(
   SupportedChainId.KROMA,
   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
   6,
   'USDT',
-  'USD//T'
+  'Tether'
 )
 
 // export const TEST_USDC_KROMA = new Token(
