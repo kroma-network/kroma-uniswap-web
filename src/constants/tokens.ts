@@ -4,6 +4,7 @@ import { Ether, NativeCurrency, Token, WETH9 } from '@uniswap/sdk-core'
 
 // import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
+import { KROMA_WRAPPED_ETH_ADDRESS } from './addresses'
 
 export const NATIVE_CHAIN_ID = 'NATIVE'
 
@@ -316,22 +317,23 @@ export const WBTC_KROMA = new Token(
   '0x080a80d05D724490b00E09016C8C4f9458787E65',
   8,
   'WBTC',
-  'WBT//C'
+  'Wrapped Bitcoin'
 )
 export const USDC_KROMA = new Token(
   SupportedChainId.KROMA,
   '0x21B0f94B97457755D846a19b06Caf855b7f98701',
   6,
   'USDC',
-  'USD//C'
+  'USD Coin'
 )
 export const USDT_KROMA = new Token(
   SupportedChainId.KROMA,
   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
   6,
   'USDT',
-  'USD//T'
+  'Tether'
 )
+export const KROMA_TOKENS = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
 
 // export const TEST_USDC_KROMA = new Token(
 //   SupportedChainId.KROMA,
@@ -446,7 +448,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
   // ),
   [SupportedChainId.KROMA]: new Token(
     SupportedChainId.KROMA,
-    '0x4200000000000000000000000000000000000001',
+    KROMA_WRAPPED_ETH_ADDRESS,
     18,
     'WETH',
     'Kroma Wrapped ETH'

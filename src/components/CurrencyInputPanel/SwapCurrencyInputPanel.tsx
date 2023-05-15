@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
-// import { TraceEvent } from '@uniswap/analytics'
-// import { BrowserEvent, ElementName, EventName } from '@uniswap/analytics-events'
+import { TraceEvent } from '@uniswap/analytics'
+import { BrowserEvent, ElementName, EventName } from '@uniswap/analytics-events'
 import { Currency, CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
 import { Pair } from '@uniswap/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
@@ -12,19 +12,19 @@ import { isSupportedChain } from 'constants/chains'
 import { darken } from 'polished'
 import { ReactNode, useCallback, useEffect, useState } from 'react'
 import { Lock } from 'react-feather'
-// import styled, { useTheme } from 'styled-components/macro'
-import styled from 'styled-components/macro'
+import styled, { useTheme } from 'styled-components/macro'
+// import styled from 'styled-components/macro'
 import { flexColumnNoWrap, flexRowNoWrap } from 'theme/styles'
-// import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
+import { formatCurrencyAmount } from 'utils/formatCurrencyAmount'
 
 import { ReactComponent as DropDown } from '../../assets/images/dropdown.svg'
-// import { useCurrencyBalance } from '../../state/connection/hooks'
+import { useCurrencyBalance } from '../../state/connection/hooks'
 import { ThemedText } from '../../theme'
 import { ButtonGray } from '../Button'
 import DoubleCurrencyLogo from '../DoubleLogo'
 import { Input as NumericalInput } from '../NumericalInput'
-// import { RowBetween, RowFixed } from '../Row'
-import { RowFixed } from '../Row'
+import { RowBetween, RowFixed } from '../Row'
+// import { RowFixed } from '../Row'
 import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
 // import { FiatValue } from './FiatValue'
 
@@ -158,25 +158,25 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
   font-weight: 600;
 `
 
-// const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
-//   background-color: transparent;
-//   border: none;
-//   color: ${({ theme }) => theme.accentAction};
-//   cursor: pointer;
-//   font-size: 14px;
-//   font-weight: 600;
-//   opacity: ${({ disabled }) => (!disabled ? 1 : 0.4)};
-//   padding: 4px 6px;
-//   pointer-events: ${({ disabled }) => (!disabled ? 'initial' : 'none')};
+const StyledBalanceMax = styled.button<{ disabled?: boolean }>`
+  background-color: transparent;
+  border: none;
+  color: ${({ theme }) => theme.accentAction};
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: ${({ disabled }) => (!disabled ? 1 : 0.4)};
+  padding: 4px 6px;
+  pointer-events: ${({ disabled }) => (!disabled ? 'initial' : 'none')};
 
-//   :hover {
-//     opacity: ${({ disabled }) => (!disabled ? 0.8 : 0.4)};
-//   }
+  :hover {
+    opacity: ${({ disabled }) => (!disabled ? 0.8 : 0.4)};
+  }
 
-//   :focus {
-//     outline: none;
-//   }
-// `
+  :focus {
+    outline: none;
+  }
+`
 
 const StyledNumericalInput = styled(NumericalInput)<{ $loading: boolean }>`
   ${loadingOpacityMixin};
@@ -233,10 +233,10 @@ export default function SwapCurrencyInputPanel({
 }: SwapCurrencyInputPanelProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [fiatValueIsLoading, setFiatValueIsLoading] = useState(false)
-  // const { account, chainId } = useWeb3React()
-  const { chainId } = useWeb3React()
-  // const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
-  // const theme = useTheme()
+  const { account, chainId } = useWeb3React()
+  // const { chainId } = useWeb3React()
+  const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
+  const theme = useTheme()
 
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
@@ -313,42 +313,43 @@ export default function SwapCurrencyInputPanel({
         </InputRow>
         {Boolean(!hideInput && !hideBalance) && (
           <FiatRow>
-            {/*<RowBetween>*/}
-            {/*  <LoadingOpacityContainer $loading={loading}>*/}
-            {/*    <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />*/}
-            {/*  </LoadingOpacityContainer>*/}
-            {/*  {account ? (*/}
-            {/*    <RowFixed style={{ height: '17px' }}>*/}
-            {/*      <ThemedText.DeprecatedBody*/}
-            {/*        color={theme.textSecondary}*/}
-            {/*        fontWeight={400}*/}
-            {/*        fontSize={14}*/}
-            {/*        style={{ display: 'inline' }}*/}
-            {/*      >*/}
-            {/*        {!hideBalance && currency && selectedCurrencyBalance ? (*/}
-            {/*          renderBalance ? (*/}
-            {/*            renderBalance(selectedCurrencyBalance)*/}
-            {/*          ) : (*/}
-            {/*            <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>*/}
-            {/*          )*/}
-            {/*        ) : null}*/}
-            {/*      </ThemedText.DeprecatedBody>*/}
-            {/*      {showMaxButton && selectedCurrencyBalance ? (*/}
-            {/*        <TraceEvent*/}
-            {/*          events={[BrowserEvent.onClick]}*/}
-            {/*          name={EventName.SWAP_MAX_TOKEN_AMOUNT_SELECTED}*/}
-            {/*          element={ElementName.MAX_TOKEN_AMOUNT_BUTTON}*/}
-            {/*        >*/}
-            {/*          <StyledBalanceMax onClick={onMax}>*/}
-            {/*            <Trans>Max</Trans>*/}
-            {/*          </StyledBalanceMax>*/}
-            {/*        </TraceEvent>*/}
-            {/*      ) : null}*/}
-            {/*    </RowFixed>*/}
-            {/*  ) : (*/}
-            {/*    <span />*/}
-            {/*  )}*/}
-            {/*</RowBetween>*/}
+            <RowBetween>
+              <div />
+              {/*<LoadingOpacityContainer $loading={loading}>*/}
+              {/*  <FiatValue fiatValue={fiatValue} priceImpact={priceImpact} isLoading={fiatValueIsLoading} />*/}
+              {/*</LoadingOpacityContainer>*/}
+              {account ? (
+                <RowFixed style={{ height: '17px' }}>
+                  <ThemedText.DeprecatedBody
+                    color={theme.textSecondary}
+                    fontWeight={400}
+                    fontSize={14}
+                    style={{ display: 'inline' }}
+                  >
+                    {!hideBalance && currency && selectedCurrencyBalance ? (
+                      renderBalance ? (
+                        renderBalance(selectedCurrencyBalance)
+                      ) : (
+                        <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>
+                      )
+                    ) : null}
+                  </ThemedText.DeprecatedBody>
+                  {showMaxButton && selectedCurrencyBalance ? (
+                    <TraceEvent
+                      events={[BrowserEvent.onClick]}
+                      name={EventName.SWAP_MAX_TOKEN_AMOUNT_SELECTED}
+                      element={ElementName.MAX_TOKEN_AMOUNT_BUTTON}
+                    >
+                      <StyledBalanceMax onClick={onMax}>
+                        <Trans>Max</Trans>
+                      </StyledBalanceMax>
+                    </TraceEvent>
+                  ) : null}
+                </RowFixed>
+              ) : (
+                <span />
+              )}
+            </RowBetween>
           </FiatRow>
         )}
       </Container>
