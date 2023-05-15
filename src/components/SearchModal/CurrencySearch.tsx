@@ -28,6 +28,7 @@ import CommonBases from './CommonBases'
 import { CurrencyRow, formatAnalyticsEventProperties } from './CurrencyList'
 import CurrencyList from './CurrencyList'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
+import { KROMA_TOKENS } from '../../constants/tokens'
 
 const ContentWrapper = styled(Column)`
   background-color: ${({ theme }) => theme.backgroundSurface};
@@ -110,14 +111,30 @@ export function CurrencySearch({
   const native = useNativeCurrency()
   const wrapped = native.wrapped
 
+  const inKroma = (token: Token): boolean => {
+    let result = false
+
+    KROMA_TOKENS.forEach((t) => {
+      if (t.equals(token)) {
+        result = true
+      }
+    })
+
+    return result
+  }
+
   const searchCurrencies: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()
 
-    const tokens = filteredSortedTokens.filter((t) => !(t.equals(wrapped) || (disableNonToken && t.isNative)))
+    const tokens = filteredSortedTokens.filter(
+      (t) => !(t.equals(wrapped) || (disableNonToken && t.isNative) || inKroma(t))
+    )
     const natives = (disableNonToken || native.equals(wrapped) ? [wrapped] : [native, wrapped]).filter(
       (n) => n.symbol?.toLowerCase()?.indexOf(s) !== -1 || n.name?.toLowerCase()?.indexOf(s) !== -1
     )
-    return [...natives, ...tokens]
+
+    // return [...natives, ...tokens]
+    return [...natives, ...tokens, ...KROMA_TOKENS]
   }, [debouncedQuery, filteredSortedTokens, wrapped, disableNonToken, native])
 
   const handleCurrencySelect = useCallback(

@@ -236,9 +236,9 @@ export const COMMON_BASES: ChainCurrencyList = {
     //       TEST_USDT_KROMA,
     //     ]
     //   : []),
-    USDC_KROMA,
-    USDT_KROMA,
-    WBTC_KROMA,
+    // USDC_KROMA,
+    // USDT_KROMA,
+    // WBTC_KROMA,
   ],
 }
 
