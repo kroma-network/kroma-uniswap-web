@@ -6,6 +6,8 @@ import { SupportedChainId } from './chains'
 
 type AddressMap = { [chainId: number]: string }
 
+export const KROMA_WRAPPED_ETH_ADDRESS = '0x4200000000000000000000000000000000000001'
+
 export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984')
 
 export const UNISWAP_NFT_AIRDROP_CLAIM_ADDRESS = '0x8B799381ac40b838BBA4131ffB26197C432AFe78'
