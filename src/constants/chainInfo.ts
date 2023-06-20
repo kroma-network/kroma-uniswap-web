@@ -5,7 +5,7 @@
 // import celoLogo from 'assets/svg/celo_logo.svg'
 // import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 // import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
-import kromaSepoliaLogo from 'assets/images/kroma-sepolia-logo.png'
+import kromaSepoliaLogo from 'assets/images/kroma-symbol.svg'
 import ms from 'ms.macro'
 // import { darkTheme } from 'theme/colors'
 
