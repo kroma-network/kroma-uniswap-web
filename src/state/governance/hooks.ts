@@ -241,11 +241,15 @@ export function useAllProposalData(): { data: ProposalData[]; loading: boolean }
 
   const gov0ProposalIndexes = useMemo(() => {
     // return chainId === SupportedChainId.MAINNET ? V0_PROPOSAL_IDS : countToIndices(proposalCount0)
-    return chainId === SupportedChainId.KROMA ? V0_PROPOSAL_IDS : countToIndices(proposalCount0)
+    return chainId === SupportedChainId.KROMA || chainId === SupportedChainId.KROMA_DEPRECATED
+      ? V0_PROPOSAL_IDS
+      : countToIndices(proposalCount0)
   }, [chainId, proposalCount0])
   const gov1ProposalIndexes = useMemo(() => {
     // return chainId === SupportedChainId.MAINNET ? V1_PROPOSAL_IDS : countToIndices(proposalCount1)
-    return chainId === SupportedChainId.KROMA ? V1_PROPOSAL_IDS : countToIndices(proposalCount1)
+    return chainId === SupportedChainId.KROMA || chainId === SupportedChainId.KROMA_DEPRECATED
+      ? V1_PROPOSAL_IDS
+      : countToIndices(proposalCount1)
   }, [chainId, proposalCount1])
   const gov2ProposalIndexes = useMemo(() => {
     return countToIndices(proposalCount2, 8)
@@ -347,7 +351,7 @@ export function useQuorum(governorIndex: number): CurrencyAmount<Token> | undefi
     !latestGovernanceContract ||
     !quorumVotes ||
     // chainId !== SupportedChainId.MAINNET ||
-    chainId !== SupportedChainId.KROMA ||
+    (chainId !== SupportedChainId.KROMA && chainId !== SupportedChainId.KROMA_DEPRECATED) ||
     !uni ||
     governorIndex !== LATEST_GOVERNOR_INDEX
   )

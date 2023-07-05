@@ -73,6 +73,7 @@ export const CHAIN_NAME_TO_CHAIN_ID: { [key: string]: SupportedChainId } = {
   // ARBITRUM: SupportedChainId.ARBITRUM_ONE,
   // OPTIMISM: SupportedChainId.OPTIMISM,
   KROMA: SupportedChainId.KROMA,
+  KROMA_DEPRECATED: SupportedChainId.KROMA_DEPRECATED,
 }
 
 export const BACKEND_CHAIN_NAMES: Chain[] = ['ETHEREUM', 'POLYGON', 'OPTIMISM', 'ARBITRUM', 'CELO']

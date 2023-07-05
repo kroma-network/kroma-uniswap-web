@@ -102,7 +102,7 @@ export const BagFooter = ({
 
   const { balance: balanceInEth } = useWalletBalance()
   const sufficientBalance = useMemo(() => {
-    if (!connected || chainId !== SupportedChainId.KROMA) {
+    if (!connected || (chainId !== SupportedChainId.KROMA && chainId !== SupportedChainId.KROMA_DEPRECATED)) {
       // if (!connected || chainId !== SupportedChainId.MAINNET) {
       return undefined
     }

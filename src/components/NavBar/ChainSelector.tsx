@@ -26,6 +26,7 @@ const NETWORK_SELECTOR_CHAINS = [
   // SupportedChainId.ARBITRUM_ONE,
   // SupportedChainId.CELO,
   SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
 ]
 
 interface ChainSelectorProps {

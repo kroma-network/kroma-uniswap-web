@@ -313,27 +313,35 @@ export const DEFAULT_ERC20_DECIMALS = 18
 // )
 
 export const WBTC_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0x080a80d05D724490b00E09016C8C4f9458787E65',
   8,
   'WBTC',
   'Wrapped Bitcoin'
 )
 export const USDC_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0x21B0f94B97457755D846a19b06Caf855b7f98701',
   6,
   'USDC',
   'USD Coin'
 )
 export const USDT_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
   6,
   'USDT',
   'Tether'
 )
-export const KROMA_TOKENS = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
+export const TKRO_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
+  18,
+  'TKRO',
+  'Test Kroma Token'
+)
+export const KROMA_DEPRECATED_TOKENS = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
+export const KROMA_TOKENS = [TKRO_KROMA]
 
 // export const TEST_USDC_KROMA = new Token(
 //   SupportedChainId.KROMA,
@@ -453,6 +461,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'WETH',
     'Kroma Wrapped ETH'
   ),
+  [SupportedChainId.KROMA_DEPRECATED]: new Token(
+    SupportedChainId.KROMA_DEPRECATED,
+    KROMA_WRAPPED_ETH_ADDRESS,
+    18,
+    'WETH',
+    'Kroma Deprecated Wrapped ETH'
+  ),
 }
 
 // export function isCelo(chainId: number): chainId is SupportedChainId.CELO | SupportedChainId.CELO_ALFAJORES {
@@ -460,7 +475,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
 // }
 
 export function isKroma(chainId: number): chainId is SupportedChainId.KROMA {
-  return chainId === SupportedChainId.KROMA
+  return chainId === SupportedChainId.KROMA || chainId === SupportedChainId.KROMA_DEPRECATED
 }
 
 // function getCeloNativeCurrency(chainId: number) {

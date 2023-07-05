@@ -1,5 +1,6 @@
 import { nanoid } from '@reduxjs/toolkit'
 import { TokenList } from '@uniswap/token-lists'
+import { useWeb3React } from '@web3-react/core'
 import { SupportedChainId } from 'constants/chains'
 import { RPC_PROVIDERS } from 'constants/providers'
 import getTokenList from 'lib/hooks/useTokenList/fetchTokenList'
@@ -15,6 +16,7 @@ export function useFetchListCallback(): (
   skipValidation?: boolean
 ) => Promise<TokenList> {
   const dispatch = useAppDispatch()
+  const { chainId } = useWeb3React()
 
   // note: prevent dispatch if using for list search or unsupported list
   return useCallback(
@@ -23,7 +25,13 @@ export function useFetchListCallback(): (
       sendDispatch && dispatch(fetchTokenList.pending({ requestId, url: listUrl }))
       return getTokenList(
         listUrl,
-        (ensName: string) => resolveENSContentHash(ensName, RPC_PROVIDERS[SupportedChainId.KROMA]),
+        (ensName: string) =>
+          resolveENSContentHash(
+            ensName,
+            RPC_PROVIDERS[
+              chainId === SupportedChainId.KROMA ? SupportedChainId.KROMA : SupportedChainId.KROMA_DEPRECATED
+            ]
+          ),
         // (ensName: string) => resolveENSContentHash(ensName, RPC_PROVIDERS[SupportedChainId.MAINNET]),
         skipValidation
       )
@@ -37,6 +45,6 @@ export function useFetchListCallback(): (
           throw error
         })
     },
-    [dispatch]
+    [dispatch, chainId]
   )
 }
