@@ -250,7 +250,7 @@ const CHAIN_INFO: ChainInfoMap = {
     blockWaitMsBeforeWarning: ms`10m`,
     bridge: 'https://kroma.network/bridge',
     docs: 'https://docs.kroma.network',
-    explorer: 'https://blockscout.sepolia-deprecated.kroma.network/',
+    explorer: 'https://tmp-api.sepolia.kroma.network/',
     infoLink: '',
     label: 'Kroma Sepolia Deprecated',
     logoUrl: kromaSepoliaLogo,

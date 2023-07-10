@@ -93,7 +93,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.KROMA_DEPRECATED]: [
     // "Safe" URLs
-    `https://api.sepolia.kroma.network`,
+    `https://tmp-api.sepolia.kroma.network`,
   ],
 }
 
@@ -144,7 +144,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   // [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
   [SupportedChainId.KROMA]: ['https://api.sepolia.kroma.network', ...FALLBACK_URLS[SupportedChainId.KROMA]],
   [SupportedChainId.KROMA_DEPRECATED]: [
-    'https://api.sepolia.kroma.network',
+    'https://tmp-api.sepolia.kroma.network',
     ...FALLBACK_URLS[SupportedChainId.KROMA_DEPRECATED],
   ],
 }

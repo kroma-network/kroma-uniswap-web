@@ -333,15 +333,15 @@ export const USDT_KROMA = new Token(
   'USDT',
   'Tether'
 )
-export const TKRO_KROMA = new Token(
-  SupportedChainId.KROMA,
-  '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
-  18,
-  'TKRO',
-  'Test Kroma Token'
-)
-export const KROMA_DEPRECATED_TOKENS = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
-export const KROMA_TOKENS = [TKRO_KROMA]
+// export const TKRO_KROMA = new Token(
+//   SupportedChainId.KROMA,
+//   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
+//   18,
+//   'TKRO',
+//   'Test Kroma Token'
+// )
+export const KROMA_DEPRECATED_TOKENS: Token[] = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
+export const KROMA_TOKENS: Token[] = []
 
 // export const TEST_USDC_KROMA = new Token(
 //   SupportedChainId.KROMA,
@@ -555,6 +555,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     // [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     // [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     // [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
-    [SupportedChainId.KROMA]: USDC_KROMA.address,
+    [SupportedChainId.KROMA_DEPRECATED]: USDC_KROMA.address,
   },
 }

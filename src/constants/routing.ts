@@ -3,7 +3,7 @@ import { Currency, Token } from '@uniswap/sdk-core'
 
 import { SupportedChainId } from './chains'
 import {
-  TKRO_KROMA,
+  // TKRO_KROMA,
   // TEST_STABLE_TOKEN_A_KROMA,
   // TEST_STABLE_TOKEN_B_KROMA,
   // TEST_TOKEN_A_KROMA,
@@ -125,7 +125,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     //   : []),
   ],
   [SupportedChainId.KROMA]: [
-    TKRO_KROMA,
+    // TKRO_KROMA,
     // ...(process.env.REACT_APP_MODE !== 'prod'
     //   ? [
     //       TEST_USDC_KROMA,

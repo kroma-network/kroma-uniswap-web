@@ -1,7 +1,7 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
 import { SupportedChainId } from 'constants/chains'
 import {
-  TKRO_KROMA,
+  // TKRO_KROMA,
   // TEST_USDC_KROMA,
   // TEST_USDT_KROMA,
   USDC_KROMA,
@@ -75,9 +75,9 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
     return KromaUSDT
   }
 
-  if (checksummedAddress === TKRO_KROMA.address) {
-    return KromaWETH
-  }
+  // if (checksummedAddress === TKRO_KROMA.address) {
+  //   return KromaWETH
+  // }
 
   return KromaTNBGR
 
