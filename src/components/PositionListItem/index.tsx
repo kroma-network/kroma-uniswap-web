@@ -10,12 +10,14 @@ import Loader from 'components/Loader'
 import { RowBetween } from 'components/Row'
 import { SupportedChainId } from 'constants/chains'
 import {
+  ORU_KROMA,
   // TEST_STABLE_TOKEN_A_KROMA,
   // TEST_STABLE_TOKEN_B_KROMA,
   USDC_KROMA,
   USDT_KROMA,
   WBTC_KROMA,
   WRAPPED_NATIVE_CURRENCY,
+  ZKR_KROMA,
 } from 'constants/tokens'
 import { useToken } from 'hooks/Tokens'
 import useIsTickAtLimit from 'hooks/useIsTickAtLimit'
@@ -147,7 +149,7 @@ export function getPriceOrderingFromPositionForUI(
           USDT_KROMA,
           // ...(process.env.REACT_APP_MODE !== 'prod' ? [TEST_STABLE_TOKEN_A_KROMA, TEST_STABLE_TOKEN_B_KROMA] : []),
         ]
-      : []
+      : [ORU_KROMA, ZKR_KROMA]
   if (stables.some((stable) => stable.equals(token0))) {
     return {
       priceLower: position.token0PriceUpper.invert(),

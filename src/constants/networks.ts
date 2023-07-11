@@ -1,5 +1,7 @@
 import { SupportedChainId } from './chains'
 
+export const isProdEnv = window.origin.includes('uniswap.sepolia.kroma.network')
+
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
 if (typeof INFURA_KEY === 'undefined') {
   throw new Error(`REACT_APP_INFURA_KEY must be a defined environment variable`)
@@ -89,11 +91,11 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   // ],
   [SupportedChainId.KROMA]: [
     // "Safe" URLs
-    `https://api.sepolia.kroma.network`,
+    isProdEnv ? `https://api.sepolia.kroma.network` : `https://tmp-api.sepolia.kroma.network`,
   ],
   [SupportedChainId.KROMA_DEPRECATED]: [
     // "Safe" URLs
-    `https://tmp-api.sepolia.kroma.network`,
+    isProdEnv ? 'https://api.sepolia-deprecated.kroma.network' : `https://api.sepolia.kroma.network`,
   ],
 }
 
@@ -142,9 +144,12 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   // ],
   // [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   // [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
-  [SupportedChainId.KROMA]: ['https://api.sepolia.kroma.network', ...FALLBACK_URLS[SupportedChainId.KROMA]],
+  [SupportedChainId.KROMA]: [
+    isProdEnv ? 'https://api.sepolia.kroma.network' : 'https://tmp-api.sepolia.kroma.network',
+    ...FALLBACK_URLS[SupportedChainId.KROMA],
+  ],
   [SupportedChainId.KROMA_DEPRECATED]: [
-    'https://tmp-api.sepolia.kroma.network',
+    isProdEnv ? 'https://api.sepolia-deprecated.kroma.network' : 'https://api.sepolia.kroma.network',
     ...FALLBACK_URLS[SupportedChainId.KROMA_DEPRECATED],
   ],
 }

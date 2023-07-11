@@ -15,6 +15,8 @@ import {
   WBTC_KROMA,
   WRAPPED_NATIVE_CURRENCY,
   nativeOnChain,
+  ORU_KROMA,
+  ZKR_KROMA,
 } from './tokens'
 // import {
 //   AMPL,
@@ -125,6 +127,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     //   : []),
   ],
   [SupportedChainId.KROMA]: [
+    ORU_KROMA,
+    ZKR_KROMA,
     // TKRO_KROMA,
     // ...(process.env.REACT_APP_MODE !== 'prod'
     //   ? [

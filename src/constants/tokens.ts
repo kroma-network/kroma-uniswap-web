@@ -333,6 +333,20 @@ export const USDT_KROMA = new Token(
   'USDT',
   'Tether'
 )
+export const ORU_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0xfDF68008ec2ec321c0db050EB5FfcAf25Fab3df8',
+  18,
+  'ORU',
+  'ORU'
+)
+export const ZKR_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x1e187315ad7B84E1A9BB2A3Ab23A47EF9F8A7327',
+  18,
+  'ZKR',
+  'ZKR'
+)
 // export const TKRO_KROMA = new Token(
 //   SupportedChainId.KROMA,
 //   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
@@ -341,7 +355,7 @@ export const USDT_KROMA = new Token(
 //   'Test Kroma Token'
 // )
 export const KROMA_DEPRECATED_TOKENS: Token[] = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
-export const KROMA_TOKENS: Token[] = []
+export const KROMA_TOKENS: Token[] = [ORU_KROMA, ZKR_KROMA]
 
 // export const TEST_USDC_KROMA = new Token(
 //   SupportedChainId.KROMA,

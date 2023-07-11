@@ -12,6 +12,7 @@ import ms from 'ms.macro'
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
 // import { ARBITRUM_LIST, CELO_LIST, KROMA_LIST, OPTIMISM_LIST } from './lists'
 import { KROMA_LIST, KROMA_LIST_DEPRECATED } from './lists'
+import { isProdEnv } from './networks'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -238,7 +239,7 @@ const CHAIN_INFO: ChainInfoMap = {
     blockWaitMsBeforeWarning: ms`10m`,
     bridge: 'https://kroma.network/bridge',
     docs: 'https://docs.kroma.network',
-    explorer: 'https://blockscout.sepolia.kroma.network/',
+    explorer: isProdEnv ? 'https://blockscout.sepolia.kroma.network/' : 'https://tmp-blockscout.sepolia.kroma.network/',
     infoLink: '',
     label: 'Kroma Sepolia',
     logoUrl: kromaSepoliaLogo,
@@ -250,7 +251,9 @@ const CHAIN_INFO: ChainInfoMap = {
     blockWaitMsBeforeWarning: ms`10m`,
     bridge: 'https://kroma.network/bridge',
     docs: 'https://docs.kroma.network',
-    explorer: 'https://tmp-api.sepolia.kroma.network/',
+    explorer: isProdEnv
+      ? 'https://blockscout.sepolia-deprecated.kroma.network/'
+      : 'https://blockscout.sepolia.kroma.network/',
     infoLink: '',
     label: 'Kroma Sepolia Deprecated',
     logoUrl: kromaSepoliaLogo,
