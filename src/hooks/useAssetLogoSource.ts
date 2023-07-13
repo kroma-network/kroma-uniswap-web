@@ -1,6 +1,7 @@
 import TokenLogoLookupTable from 'constants/TokenLogoLookupTable'
 import { SupportedChainId } from 'constants/chains'
 import {
+  ORU_KROMA,
   // TKRO_KROMA,
   // TEST_USDC_KROMA,
   // TEST_USDT_KROMA,
@@ -8,6 +9,7 @@ import {
   USDT_KROMA,
   WBTC_KROMA,
   WRAPPED_NATIVE_CURRENCY,
+  ZKR_KROMA,
 } from 'constants/tokens'
 // import { chainIdToNetworkName, getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
 import { getNativeLogoURI } from 'lib/hooks/useCurrencyLogoURIs'
@@ -19,6 +21,8 @@ import KromaWETH from 'assets/images/kroma-weth.png'
 import KromaUSDC from 'assets/images/kroma-usdc.png'
 import KromaUSDT from 'assets/images/kroma-usdt.png'
 import KromaTNBGR from 'assets/images/kroma-tnbgr.png'
+import KromaORU from 'assets/images/kroma-oru.png'
+import KromaZKR from 'assets/images/kroma-zkr.png'
 
 const BAD_SRCS: { [tokenAddress: string]: true } = {}
 
@@ -73,6 +77,14 @@ function getInitialUrl(address?: string | null, chainId?: number | null, isNativ
 
   if (checksummedAddress === USDT_KROMA.address) {
     return KromaUSDT
+  }
+
+  if (checksummedAddress === ORU_KROMA.address) {
+    return KromaORU
+  }
+
+  if (checksummedAddress === ZKR_KROMA.address) {
+    return KromaZKR
   }
 
   // if (checksummedAddress === TKRO_KROMA.address) {
