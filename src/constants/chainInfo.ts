@@ -6,6 +6,7 @@
 // import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 // import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import kromaSepoliaLogo from 'assets/images/kroma-symbol.svg'
+import kromaSepoliaGreyLogo from 'assets/images/kroma-symbol-gray.svg'
 import ms from 'ms.macro'
 // import { darkTheme } from 'theme/colors'
 
@@ -252,8 +253,8 @@ const CHAIN_INFO: ChainInfoMap = {
     docs: 'https://docs.kroma.network',
     explorer: 'https://blockscout.sepolia-deprecated.kroma.network',
     infoLink: '',
-    label: 'Kroma Sepolia Deprecated',
-    logoUrl: kromaSepoliaLogo,
+    label: 'Kroma Sepolia (Deprecated)',
+    logoUrl: kromaSepoliaGreyLogo,
     nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
     defaultListUrl: KROMA_LIST_DEPRECATED,
   },
