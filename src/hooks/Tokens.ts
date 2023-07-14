@@ -84,7 +84,9 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
 
     return list.tokens.reduce((acc, tokenInfo) => {
       const bridgeInfo = tokenInfo.extensions?.bridgeInfo as unknown as BridgeInfo
+
       if (
+        chainId === SupportedChainId.KROMA &&
         bridgeInfo &&
         bridgeInfo[SupportedChainId.KROMA] &&
         bridgeInfo[SupportedChainId.KROMA].tokenAddress &&
@@ -99,6 +101,24 @@ export function useUnsupportedTokens(): { [address: string]: Token } {
         // return { ...acc, [address]: new Token(SupportedChainId.MAINNET, address, tokenInfo.decimals) }
         return { ...acc, [address]: new Token(SupportedChainId.KROMA, address, tokenInfo.decimals) }
       }
+
+      if (
+        chainId === SupportedChainId.KROMA_DEPRECATED &&
+        bridgeInfo &&
+        bridgeInfo[SupportedChainId.KROMA_DEPRECATED] &&
+        bridgeInfo[SupportedChainId.KROMA_DEPRECATED].tokenAddress &&
+        unsupportedSet.has(bridgeInfo[SupportedChainId.KROMA_DEPRECATED].tokenAddress)
+        // bridgeInfo[SupportedChainId.MAINNET] &&
+        // bridgeInfo[SupportedChainId.MAINNET].tokenAddress &&
+        // unsupportedSet.has(bridgeInfo[SupportedChainId.MAINNET].tokenAddress)
+      ) {
+        const address = bridgeInfo[SupportedChainId.KROMA_DEPRECATED].tokenAddress
+        // const address = bridgeInfo[SupportedChainId.MAINNET].tokenAddress
+        // don't rely on decimals--it's possible that a token could be bridged w/ different decimals on the L2
+        // return { ...acc, [address]: new Token(SupportedChainId.MAINNET, address, tokenInfo.decimals) }
+        return { ...acc, [address]: new Token(SupportedChainId.KROMA_DEPRECATED, address, tokenInfo.decimals) }
+      }
+
       return acc
     }, {})
   }, [chainId, listsByUrl, unsupportedTokens])

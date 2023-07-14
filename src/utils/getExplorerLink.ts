@@ -13,6 +13,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   // [SupportedChainId.CELO]: 'https://celoscan.io',
   // [SupportedChainId.CELO_ALFAJORES]: 'https://alfajores-blockscout.celo-testnet.org',
   [SupportedChainId.KROMA]: 'https://blockscout.sepolia.kroma.network',
+  [SupportedChainId.KROMA_DEPRECATED]: 'https://blockscout.sepolia-deprecated.kroma.network',
 }
 
 export enum ExplorerDataType {

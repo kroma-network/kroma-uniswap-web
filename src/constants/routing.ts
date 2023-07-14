@@ -3,6 +3,7 @@ import { Currency, Token } from '@uniswap/sdk-core'
 
 import { SupportedChainId } from './chains'
 import {
+  // TKRO_KROMA,
   // TEST_STABLE_TOKEN_A_KROMA,
   // TEST_STABLE_TOKEN_B_KROMA,
   // TEST_TOKEN_A_KROMA,
@@ -14,6 +15,8 @@ import {
   WBTC_KROMA,
   WRAPPED_NATIVE_CURRENCY,
   nativeOnChain,
+  ORU_KROMA,
+  ZKR_KROMA,
 } from './tokens'
 // import {
 //   AMPL,
@@ -108,10 +111,25 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   //   WETH_POLYGON,
   // ],
   // [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
-  [SupportedChainId.KROMA]: [
+  [SupportedChainId.KROMA_DEPRECATED]: [
     USDC_KROMA,
     USDT_KROMA,
     WBTC_KROMA,
+    // ...(process.env.REACT_APP_MODE !== 'prod'
+    //   ? [
+    //       TEST_USDC_KROMA,
+    //       TEST_USDT_KROMA,
+    //       TEST_TOKEN_A_KROMA,
+    //       TEST_TOKEN_B_KROMA,
+    //       TEST_STABLE_TOKEN_A_KROMA,
+    //       TEST_STABLE_TOKEN_B_KROMA,
+    //     ]
+    //   : []),
+  ],
+  [SupportedChainId.KROMA]: [
+    ORU_KROMA,
+    ZKR_KROMA,
+    // TKRO_KROMA,
     // ...(process.env.REACT_APP_MODE !== 'prod'
     //   ? [
     //       TEST_USDC_KROMA,
@@ -226,6 +244,23 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KROMA]: [
     nativeOnChain(SupportedChainId.KROMA),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA] as Token,
+    // ...(process.env.REACT_APP_MODE !== 'prod'
+    //   ? [
+    //       TEST_STABLE_TOKEN_A_KROMA,
+    //       TEST_STABLE_TOKEN_B_KROMA,
+    //       TEST_TOKEN_A_KROMA,
+    //       TEST_TOKEN_B_KROMA,
+    //       TEST_USDC_KROMA,
+    //       TEST_USDT_KROMA,
+    //     ]
+    //   : []),
+    // USDC_KROMA,
+    // USDT_KROMA,
+    // WBTC_KROMA,
+  ],
+  [SupportedChainId.KROMA_DEPRECATED]: [
+    nativeOnChain(SupportedChainId.KROMA_DEPRECATED),
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.KROMA_DEPRECATED] as Token,
     // ...(process.env.REACT_APP_MODE !== 'prod'
     //   ? [
     //       TEST_STABLE_TOKEN_A_KROMA,

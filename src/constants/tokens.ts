@@ -313,27 +313,49 @@ export const DEFAULT_ERC20_DECIMALS = 18
 // )
 
 export const WBTC_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0x080a80d05D724490b00E09016C8C4f9458787E65',
   8,
   'WBTC',
   'Wrapped Bitcoin'
 )
 export const USDC_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0x21B0f94B97457755D846a19b06Caf855b7f98701',
   6,
   'USDC',
   'USD Coin'
 )
 export const USDT_KROMA = new Token(
-  SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
   6,
   'USDT',
   'Tether'
 )
-export const KROMA_TOKENS = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
+export const ORU_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0xfDF68008ec2ec321c0db050EB5FfcAf25Fab3df8',
+  18,
+  'ORU',
+  'ORU'
+)
+export const ZKR_KROMA = new Token(
+  SupportedChainId.KROMA,
+  '0x1e187315ad7B84E1A9BB2A3Ab23A47EF9F8A7327',
+  18,
+  'ZKR',
+  'ZKR'
+)
+// export const TKRO_KROMA = new Token(
+//   SupportedChainId.KROMA,
+//   '0xa0245760133CE77Fb4b1C75097e5ED6b737395DE',
+//   18,
+//   'TKRO',
+//   'Test Kroma Token'
+// )
+export const KROMA_DEPRECATED_TOKENS: Token[] = [WBTC_KROMA, USDC_KROMA, USDT_KROMA]
+export const KROMA_TOKENS: Token[] = [ORU_KROMA, ZKR_KROMA]
 
 // export const TEST_USDC_KROMA = new Token(
 //   SupportedChainId.KROMA,
@@ -453,6 +475,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'WETH',
     'Kroma Wrapped ETH'
   ),
+  [SupportedChainId.KROMA_DEPRECATED]: new Token(
+    SupportedChainId.KROMA_DEPRECATED,
+    KROMA_WRAPPED_ETH_ADDRESS,
+    18,
+    'WETH',
+    'Kroma Deprecated Wrapped ETH'
+  ),
 }
 
 // export function isCelo(chainId: number): chainId is SupportedChainId.CELO | SupportedChainId.CELO_ALFAJORES {
@@ -460,7 +489,7 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
 // }
 
 export function isKroma(chainId: number): chainId is SupportedChainId.KROMA {
-  return chainId === SupportedChainId.KROMA
+  return chainId === SupportedChainId.KROMA || chainId === SupportedChainId.KROMA_DEPRECATED
 }
 
 // function getCeloNativeCurrency(chainId: number) {
@@ -540,6 +569,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     // [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     // [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     // [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
-    [SupportedChainId.KROMA]: USDC_KROMA.address,
+    [SupportedChainId.KROMA_DEPRECATED]: USDC_KROMA.address,
   },
 }

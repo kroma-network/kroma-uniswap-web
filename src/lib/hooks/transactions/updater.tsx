@@ -36,6 +36,7 @@ const RETRY_OPTIONS_BY_CHAIN_ID: { [chainId: number]: RetryOptions } = {
   // [SupportedChainId.OPTIMISM_GOERLI]: { n: 10, minWait: 250, maxWait: 1000 },
   // [SupportedChainId.OPTIMISM]: { n: 10, minWait: 250, maxWait: 1000 },
   [SupportedChainId.KROMA]: { n: 10, minWait: 250, maxWait: 1000 },
+  [SupportedChainId.KROMA_DEPRECATED]: { n: 10, minWait: 250, maxWait: 1000 },
 }
 const DEFAULT_RETRY_OPTIONS: RetryOptions = { n: 1, minWait: 0, maxWait: 0 }
 

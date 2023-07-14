@@ -28,7 +28,8 @@ import CommonBases from './CommonBases'
 import { CurrencyRow, formatAnalyticsEventProperties } from './CurrencyList'
 import CurrencyList from './CurrencyList'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
-import { KROMA_TOKENS } from '../../constants/tokens'
+import { KROMA_DEPRECATED_TOKENS, KROMA_TOKENS } from '../../constants/tokens'
+import { SupportedChainId } from 'constants/chains'
 
 const ContentWrapper = styled(Column)`
   background-color: ${({ theme }) => theme.backgroundSurface};
@@ -120,6 +121,12 @@ export function CurrencySearch({
       }
     })
 
+    KROMA_DEPRECATED_TOKENS.forEach((t) => {
+      if (t.equals(token)) {
+        result = true
+      }
+    })
+
     return result
   }
 
@@ -134,8 +141,13 @@ export function CurrencySearch({
     )
 
     // return [...natives, ...tokens]
+
+    if (chainId === SupportedChainId.KROMA_DEPRECATED) {
+      return [...natives, ...tokens, ...KROMA_DEPRECATED_TOKENS]
+    }
+
     return [...natives, ...tokens, ...KROMA_TOKENS]
-  }, [debouncedQuery, filteredSortedTokens, wrapped, disableNonToken, native])
+  }, [debouncedQuery, filteredSortedTokens, wrapped, disableNonToken, native, chainId])
 
   const handleCurrencySelect = useCallback(
     (currency: Currency, hasWarning?: boolean) => {

@@ -20,7 +20,8 @@ export enum SupportedChainId {
   // CELO = 42220,
   // CELO_ALFAJORES = 44787,
 
-  KROMA = 2357,
+  KROMA = 2358,
+  KROMA_DEPRECATED = 2357,
 }
 
 export const CHAIN_IDS_TO_NAMES = {
@@ -38,6 +39,7 @@ export const CHAIN_IDS_TO_NAMES = {
   // [SupportedChainId.OPTIMISM]: 'optimism',
   // [SupportedChainId.OPTIMISM_GOERLI]: 'optimism_goerli',
   [SupportedChainId.KROMA]: 'kroma_sepolia',
+  [SupportedChainId.KROMA_DEPRECATED]: 'kroma_sepolia_deprecated',
 }
 
 /**
@@ -58,6 +60,7 @@ export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   // SupportedChainId.OPTIMISM,
   // SupportedChainId.ARBITRUM_ONE,
   SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
 ]
 
 /**
@@ -68,6 +71,7 @@ export const UNSUPPORTED_V2POOL_CHAIN_IDS = [
   // SupportedChainId.OPTIMISM,
   // SupportedChainId.ARBITRUM_ONE,
   SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
 ]
 
 export const TESTNET_CHAIN_IDS = [
@@ -79,6 +83,7 @@ export const TESTNET_CHAIN_IDS = [
   // SupportedChainId.ARBITRUM_RINKEBY,
   // SupportedChainId.OPTIMISM_GOERLI,
   SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
 ] as const
 
 export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
@@ -110,6 +115,7 @@ export const L2_CHAIN_IDS = [
   // SupportedChainId.OPTIMISM,
   // SupportedChainId.OPTIMISM_GOERLI,
   SupportedChainId.KROMA,
+  SupportedChainId.KROMA_DEPRECATED,
 ] as const
 
 export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number]

@@ -369,7 +369,7 @@ export function PositionPage() {
 
   const tickAtLimit = useIsTickAtLimit(feeAmount, tickLower, tickUpper)
 
-  const pricesFromPosition = getPriceOrderingFromPositionForUI(position)
+  const pricesFromPosition = getPriceOrderingFromPositionForUI(position, chainId)
   const [manuallyInverted, setManuallyInverted] = useState(false)
 
   // handle manual inversion

@@ -45,7 +45,7 @@ export function getNativeLogoURI(chainId: SupportedChainId = SupportedChainId.KR
 function getTokenLogoURI(address: string, chainId: SupportedChainId = SupportedChainId.KROMA): string | void {
   const networkName = chainIdToNetworkName(chainId)
   // const networksWithUrls = [SupportedChainId.ARBITRUM_ONE, SupportedChainId.MAINNET, SupportedChainId.OPTIMISM]
-  const networksWithUrls = [SupportedChainId.KROMA]
+  const networksWithUrls = [SupportedChainId.KROMA, SupportedChainId.KROMA_DEPRECATED]
   if (networksWithUrls.includes(chainId)) {
     return `https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/${networkName}/assets/${address}/logo.png`
   }

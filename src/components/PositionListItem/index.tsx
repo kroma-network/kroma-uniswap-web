@@ -1,19 +1,23 @@
 import { Trans } from '@lingui/macro'
 import { Percent, Price, Token } from '@uniswap/sdk-core'
 import { Position } from '@uniswap/v3-sdk'
+import { useWeb3React } from '@web3-react/core'
 import Badge from 'components/Badge'
 import RangeBadge from 'components/Badge/RangeBadge'
 import DoubleCurrencyLogo from 'components/DoubleLogo'
 import HoverInlineText from 'components/HoverInlineText'
 import Loader from 'components/Loader'
 import { RowBetween } from 'components/Row'
+import { SupportedChainId } from 'constants/chains'
 import {
+  ORU_KROMA,
   // TEST_STABLE_TOKEN_A_KROMA,
   // TEST_STABLE_TOKEN_B_KROMA,
   USDC_KROMA,
   USDT_KROMA,
   WBTC_KROMA,
   WRAPPED_NATIVE_CURRENCY,
+  ZKR_KROMA,
 } from 'constants/tokens'
 import { useToken } from 'hooks/Tokens'
 import useIsTickAtLimit from 'hooks/useIsTickAtLimit'
@@ -120,7 +124,10 @@ interface PositionListItemProps {
   positionDetails: PositionDetails
 }
 
-export function getPriceOrderingFromPositionForUI(position?: Position): {
+export function getPriceOrderingFromPositionForUI(
+  position?: Position,
+  chainId?: number
+): {
   priceLower?: Price<Token, Token>
   priceUpper?: Price<Token, Token>
   quote?: Token
@@ -135,11 +142,14 @@ export function getPriceOrderingFromPositionForUI(position?: Position): {
 
   // if token0 is a dollar-stable asset, set it as the quote token
   // const stables = [DAI, USDC_MAINNET, USDT]
-  const stables = [
-    USDC_KROMA,
-    USDT_KROMA,
-    // ...(process.env.REACT_APP_MODE !== 'prod' ? [TEST_STABLE_TOKEN_A_KROMA, TEST_STABLE_TOKEN_B_KROMA] : []),
-  ]
+  const stables =
+    chainId === SupportedChainId.KROMA_DEPRECATED
+      ? [
+          USDC_KROMA,
+          USDT_KROMA,
+          // ...(process.env.REACT_APP_MODE !== 'prod' ? [TEST_STABLE_TOKEN_A_KROMA, TEST_STABLE_TOKEN_B_KROMA] : []),
+        ]
+      : [ORU_KROMA, ZKR_KROMA]
   if (stables.some((stable) => stable.equals(token0))) {
     return {
       priceLower: position.token0PriceUpper.invert(),
@@ -151,7 +161,10 @@ export function getPriceOrderingFromPositionForUI(position?: Position): {
 
   // if token1 is an ETH-/BTC-stable asset, set it as the base token
   // const bases = [...Object.values(WRAPPED_NATIVE_CURRENCY), WBTC]
-  const bases = [...Object.values(WRAPPED_NATIVE_CURRENCY), WBTC_KROMA]
+  const bases =
+    chainId === SupportedChainId.KROMA_DEPRECATED
+      ? [...Object.values(WRAPPED_NATIVE_CURRENCY), WBTC_KROMA]
+      : [...Object.values(WRAPPED_NATIVE_CURRENCY)]
   if (bases.some((base) => base && base.equals(token1))) {
     return {
       priceLower: position.token0PriceUpper.invert(),
@@ -190,6 +203,8 @@ export default function PositionListItem({ positionDetails }: PositionListItemPr
     tickUpper,
   } = positionDetails
 
+  const { chainId } = useWeb3React()
+
   const token0 = useToken(token0Address)
   const token1 = useToken(token1Address)
 
@@ -209,7 +224,7 @@ export default function PositionListItem({ positionDetails }: PositionListItemPr
   const tickAtLimit = useIsTickAtLimit(feeAmount, tickLower, tickUpper)
 
   // prices
-  const { priceLower, priceUpper, quote, base } = getPriceOrderingFromPositionForUI(position)
+  const { priceLower, priceUpper, quote, base } = getPriceOrderingFromPositionForUI(position, chainId)
 
   const currencyQuote = quote && unwrappedToken(quote)
   const currencyBase = base && unwrappedToken(base)

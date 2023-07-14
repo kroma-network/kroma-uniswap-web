@@ -11,7 +11,7 @@ import ms from 'ms.macro'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
 // import { ARBITRUM_LIST, CELO_LIST, KROMA_LIST, OPTIMISM_LIST } from './lists'
-import { KROMA_LIST } from './lists'
+import { KROMA_LIST, KROMA_LIST_DEPRECATED } from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms`12s`
 
@@ -238,12 +238,24 @@ const CHAIN_INFO: ChainInfoMap = {
     blockWaitMsBeforeWarning: ms`10m`,
     bridge: 'https://kroma.network/bridge',
     docs: 'https://docs.kroma.network',
-    explorer: 'https://blockscout.sepolia.kroma.network/',
+    explorer: 'https://blockscout.sepolia.kroma.network',
     infoLink: '',
     label: 'Kroma Sepolia',
     logoUrl: kromaSepoliaLogo,
     nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
     defaultListUrl: KROMA_LIST,
+  },
+  [SupportedChainId.KROMA_DEPRECATED]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://kroma.network/bridge',
+    docs: 'https://docs.kroma.network',
+    explorer: 'https://blockscout.sepolia-deprecated.kroma.network',
+    infoLink: '',
+    label: 'Kroma Sepolia Deprecated',
+    logoUrl: kromaSepoliaLogo,
+    nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+    defaultListUrl: KROMA_LIST_DEPRECATED,
   },
 }
 
