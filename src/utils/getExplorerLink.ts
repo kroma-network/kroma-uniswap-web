@@ -1,4 +1,3 @@
-import { isProdEnv } from 'constants/networks'
 import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
@@ -13,12 +12,8 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   // [SupportedChainId.POLYGON_MUMBAI]: 'https://mumbai.polygonscan.com',
   // [SupportedChainId.CELO]: 'https://celoscan.io',
   // [SupportedChainId.CELO_ALFAJORES]: 'https://alfajores-blockscout.celo-testnet.org',
-  [SupportedChainId.KROMA]: isProdEnv
-    ? 'https://blockscout.sepolia.kroma.network'
-    : 'https://tmp-blockscout.sepolia.kroma.network',
-  [SupportedChainId.KROMA_DEPRECATED]: isProdEnv
-    ? 'https://blockscout.sepolia-deprecated.kroma.network'
-    : 'https://blockscout.sepolia.kroma.network',
+  [SupportedChainId.KROMA]: 'https://blockscout.sepolia.kroma.network',
+  [SupportedChainId.KROMA_DEPRECATED]: 'https://blockscout.sepolia-deprecated.kroma.network',
 }
 
 export enum ExplorerDataType {
