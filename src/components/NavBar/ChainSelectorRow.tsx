@@ -33,10 +33,16 @@ const Container = styled.button`
   }
 `
 
-const Label = styled.div`
+const Label = styled.div<{ isGrey: boolean }>`
   grid-column: 2;
   grid-row: 1;
   font-size: 16px;
+
+  ${(p) =>
+    p.isGrey &&
+    `
+    color: #4a5568;
+  `}
 `
 
 const Status = styled.div`
@@ -78,7 +84,7 @@ export default function ChainSelectorRow({
   return (
     <Container onClick={() => onSelectChain(targetChain)}>
       <Logo src={logoUrl} alt={label} />
-      <Label>{label}</Label>
+      <Label isGrey={label.toLowerCase().includes('deprecated')}>{label}</Label>
       {isPending && <ApproveText>Approve in wallet</ApproveText>}
       <Status>
         {active && <CheckMarkIcon width={LOGO_SIZE} height={LOGO_SIZE} color={theme.accentActive} />}
