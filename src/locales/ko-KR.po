@@ -1740,7 +1740,7 @@ msgstr "{0} {1} 및 {2} {3} 공급 중"
 #: src/pages/Swap/index.tsx
 #: src/pages/Swap/index.tsx
 msgid "Swap"
-msgstr "스왑"
+msgstr "Swap"
 
 #: src/components/AccountDetails/TransactionSummary.tsx
 msgid "Swap <0/> for exactly <1/>"
