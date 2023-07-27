@@ -26,7 +26,7 @@ export const PageWrapper = styled.div`
 export const SwapWrapper = styled.main`
   position: relative;
   background: ${({ theme }) => theme.backgroundSurface};
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.backgroundOutline};
   padding: 8px;
   z-index: ${Z_INDEX.deprecated_content};

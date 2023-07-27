@@ -5,9 +5,9 @@ import Web3Status from 'components/Web3Status'
 import { useIsNftPage } from 'hooks/useIsNftPage'
 import { Box } from 'nft/components/Box'
 import { Row } from 'nft/components/Flex'
-import { UniIcon } from 'nft/components/icons'
+// import { UniIcon } from 'nft/components/icons'
 import { ReactNode } from 'react'
-import { NavLink, NavLinkProps, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, NavLinkProps, useLocation } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 import { Bag } from './Bag'
@@ -96,14 +96,14 @@ const PageTabs = () => {
 
 const Navbar = () => {
   const isNftPage = useIsNftPage()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   return (
     <>
       <Nav>
         <Box display="flex" height="full" flexWrap="nowrap" alignItems="center">
           <Box className={styles.leftSideContainer}>
-            <Box className={styles.logoContainer}>
+            {/* <Box className={styles.logoContainer}>
               <UniIcon
                 width="48"
                 height="48"
@@ -112,7 +112,7 @@ const Navbar = () => {
                   navigate('/')
                 }}
               />
-            </Box>
+            </Box> */}
             {/* {!isNftPage && (
               <Box display={{ sm: 'flex', lg: 'none' }} alignSelf="center">
                 <ChainSelector leftAlign={true} />

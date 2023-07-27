@@ -13,6 +13,13 @@ const Container = styled(ThemedText.DeprecatedSmall)`
     opacity: 1;
   }
   margin-top: 1rem !important;
+
+  text-align: center;
+  max-width: 354px;
+`
+
+const Description = styled.div`
+  margin-top: 20px;
 `
 
 const useTargetLocale = (activeLocale: SupportedLocale) => {
@@ -39,11 +46,15 @@ export function SwitchLocaleLink() {
   return (
     <Container>
       <Trans>
-        Uniswap available in:{' '}
+        Swap available in:{' '}
         <StyledInternalLink onClick={onClick} to={to}>
           {LOCALE_LABEL[targetLocale]}
         </StyledInternalLink>
       </Trans>
+      <Description>
+        This Swap serves as a testing application specifically intended to enhance the user experience during the
+        testnet phase.
+      </Description>
     </Container>
   )
 }

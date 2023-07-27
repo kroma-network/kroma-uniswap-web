@@ -324,9 +324,9 @@ export default function WalletModal({
 
       const content = (
         <Trans>
-          By connecting a wallet, you agree to Uniswap Labs’{' '}
-          <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and consent to its{' '}
-          <ExternalLink href="https://uniswap.org/privacy-policy">Privacy Policy</ExternalLink>.
+          By connecting a wallet, you agree to Kroma’{' '}
+          <ExternalLink href="https://kroma.network/terms-of-service">Terms of Service</ExternalLink> and consent to its{' '}
+          <ExternalLink href="https://kroma.network/privacy-policy">Privacy Policy</ExternalLink>.
         </Trans>
       )
       return (

@@ -363,7 +363,7 @@ msgid "By adding liquidity you'll earn 0.3% of all trades on this pair proportio
 msgstr "通过添加流动性，您将按您在流动池中所占比例赚取对应交易量的0.3%手续费。手续费将实时累加到流动池中，在您取回流动性时也将同时取回您赚取的手续费。"
 
 #: src/components/WalletModal/index.tsx
-msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
+msgid "By connecting a wallet, you agree to Kroma’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
 msgstr "连接钱包即表示您同意 Uniswap Labs 的 <0>服务条款</0> 并同意其 <1>隐私政策</1>。"
 
 #: src/pages/Vote/styled.tsx
@@ -2078,8 +2078,8 @@ msgid "Uniswap Labs' Terms of Service"
 msgstr "Uniswap Labs 的服务条款"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
-msgstr "Uniswap可用：<0>{0}</0>"
+msgid "Swap available in: <0>{0}</0>"
+msgstr "Swap可用：<0>{0}</0>"
 
 #: src/components/vote/ProposalEmptyState.tsx
 msgid "Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."
