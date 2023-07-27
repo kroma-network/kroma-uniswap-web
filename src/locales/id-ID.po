@@ -363,7 +363,7 @@ msgid "By adding liquidity you'll earn 0.3% of all trades on this pair proportio
 msgstr "Dengan menambahkan likuiditas, Anda akan mendapatkan 0,3% dari semua perdagangan pada pasangan ini sebanding dengan bagian pool Anda. Biaya ditambahkan ke pool, bertambah secara real time dan dapat diklaim dengan menarik likuiditas Anda."
 
 #: src/components/WalletModal/index.tsx
-msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
+msgid "By connecting a wallet, you agree to Kroma’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
 msgstr "Dengan menghubungkan dompet, Anda menyetujui <0>Persyaratan Layanan</0> Uniswap Labs dan menyetujui <1>Kebijakan Privasi</1>."
 
 #: src/pages/Vote/styled.tsx
@@ -2078,8 +2078,8 @@ msgid "Uniswap Labs' Terms of Service"
 msgstr "Persyaratan Layanan Uniswap Labs"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
-msgstr "Uniswap tersedia dalam: <0>{0}</0>"
+msgid "Swap available in: <0>{0}</0>"
+msgstr "Swap tersedia dalam: <0>{0}</0>"
 
 #: src/components/vote/ProposalEmptyState.tsx
 msgid "Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."

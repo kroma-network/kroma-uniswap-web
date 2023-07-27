@@ -81,6 +81,18 @@ export const colors = {
   blue800: '#0B193F',
   blue900: '#040E34',
   blueVibrant: '#587BFF',
+
+  kromaGreen50: '#E9FFDB',
+  kromaGreen100: '#CCF9B0',
+  kromaGreen200: '#A6F277',
+  kromaGreen300: '#8EEF53',
+  kromaGreen400: '#7FE441',
+  kromaGreen500: '#70DE2C',
+  kromaGreen600: '#44D620',
+  kromaGreen700: '#14C110',
+  kromaGreen800: '#039D00',
+  kromaGreen900: '#027C00',
+
   // TODO: add magenta 50-900
   magentaVibrant: '#FC72FF',
   purple300: '#8440F2',
@@ -139,15 +151,19 @@ export const darkTheme = {
   textSecondary: colors.gray300,
   textTertiary: colors.gray500,
 
-  accentAction: colors.blue400,
-  accentActive: colors.blue400,
+  // accentAction: colors.blue400,
+  // accentActive: colors.blue400,
+  accentAction: colors.kromaGreen800,
+  accentActive: colors.kromaGreen800,
   accentSuccess: colors.green200,
   accentWarning: colors.gold200,
   accentFailure: colors.red300,
   accentCritical: colors.red300,
 
-  accentActionSoft: opacify(24, colors.blue400),
-  accentActiveSoft: opacify(24, colors.blue400),
+  // accentActionSoft: opacify(24, colors.blue400),
+  // accentActiveSoft: opacify(24, colors.blue400),
+  accentActionSoft: opacify(24, colors.kromaGreen800),
+  accentActiveSoft: opacify(24, colors.kromaGreen800),
   accentSuccessSoft: opacify(24, colors.green400),
   accentWarningSoft: opacify(24, colors.gold200),
   accentFailureSoft: opacify(12, colors.red400),
@@ -163,7 +179,8 @@ export const darkTheme = {
   deepShadow: '12px 16px 24px rgba(0, 0, 0, 0.24), 12px 8px 12px rgba(0, 0, 0, 0.24), 4px 4px 8px rgba(0, 0, 0, 0.32);',
   shallowShadow: '4px 4px 10px rgba(0, 0, 0, 0.24), 2px 2px 4px rgba(0, 0, 0, 0.12), 1px 2px 2px rgba(0, 0, 0, 0.12);',
 
-  networkDefaultShadow: `0px 40px 120px ${opacify(16, colors.blue400)}`,
+  // networkDefaultShadow: `0px 40px 120px ${opacify(16, colors.blue400)}`,
+  networkDefaultShadow: `0px 40px 120px ${opacify(16, colors.kromaGreen800)}`,
 
   stateOverlayHover: opacify(8, colors.gray300),
   stateOverlayPressed: opacify(24, colors.gray200),
@@ -191,14 +208,16 @@ export const lightTheme: Theme = {
   textSecondary: colors.gray400,
   textTertiary: colors.gray300,
 
-  accentAction: colors.pink400,
+  // accentAction: colors.pink400,
+  accentAction: colors.kromaGreen700,
   accentActive: colors.blue400,
   accentSuccess: colors.green300,
   accentWarning: colors.gold200,
   accentFailure: colors.red400,
   accentCritical: colors.red400,
 
-  accentActionSoft: opacify(24, colors.pink400),
+  // accentActionSoft: opacify(24, colors.pink400),
+  accentActionSoft: opacify(24, colors.kromaGreen700),
   accentActiveSoft: opacify(24, colors.blue400),
   accentSuccessSoft: opacify(24, colors.green400),
   accentWarningSoft: opacify(24, colors.gold200),
@@ -217,7 +236,8 @@ export const lightTheme: Theme = {
   shallowShadow:
     '6px 6px 10px rgba(51, 53, 72, 0.01), 2px 2px 6px rgba(51, 53, 72, 0.02), 1px 2px 2px rgba(51, 53, 72, 0.02);',
 
-  networkDefaultShadow: `0px 40px 120px ${opacify(12, colors.pink400)}`,
+  // networkDefaultShadow: `0px 40px 120px ${opacify(12, colors.pink400)}`,
+  networkDefaultShadow: `0px 40px 120px ${opacify(12, colors.kromaGreen700)}`,
 
   stateOverlayHover: opacify(8, colors.gray300),
   stateOverlayPressed: opacify(24, colors.gray200),

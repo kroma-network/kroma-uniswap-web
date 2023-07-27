@@ -363,7 +363,7 @@ msgid "By adding liquidity you'll earn 0.3% of all trades on this pair proportio
 msgstr "Προσθέτοντας ρευστότητα θα κερδίσετε το 0,3% όλων των συναλλαγών σε αυτό το ζεύγος αναλογικά με το μερίδιό σας στη δεξαμενή. Οι χρεώσεις προστίθενται στη ψηφοφορία, συσσωρεύονται σε πραγματικό χρόνο και μπορούν να ζητηθούν μέσω της ανάληψη σας ρευστότητας."
 
 #: src/components/WalletModal/index.tsx
-msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
+msgid "By connecting a wallet, you agree to Kroma’ <0>Terms of Service</0> and consent to its <1>Privacy Policy</1>."
 msgstr "Με τη σύνδεση ενός πορτοφολιού, συμφωνείτε με τους Όρους Παροχής Υπηρεσιών <0>της Uniswap Labs</0> και συναινείτε στην <1>Πολιτική Απορρήτου</1>."
 
 #: src/pages/Vote/styled.tsx
@@ -2078,8 +2078,8 @@ msgid "Uniswap Labs' Terms of Service"
 msgstr "Όροι Παροχής Υπηρεσιών της Uniswap Labs"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
-msgstr "Το Uniswap διατίθεται σε: <0>{0}</0>"
+msgid "Swap available in: <0>{0}</0>"
+msgstr "Το Swap διατίθεται σε: <0>{0}</0>"
 
 #: src/components/vote/ProposalEmptyState.tsx
 msgid "Uniswap governance is only available on Layer 1. Switch your network to Ethereum Mainnet to view Proposals and Vote."

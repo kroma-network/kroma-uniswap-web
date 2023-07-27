@@ -1,4 +1,5 @@
 import { useWeb3React } from '@web3-react/core'
+// import { SupportedChainId } from 'constants/chains'
 import { useIsNftPage } from 'hooks/useIsNftPage'
 import { useEffect } from 'react'
 import { useDarkModeManager } from 'state/user/hooks'
@@ -85,8 +86,9 @@ export default function RadialGradientByChainUpdater(): null {
       //   break
       default:
         setBackground(initialStyles)
-        const defaultLightGradient =
-          'radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
+        // const defaultLightGradient =
+        //   'radial-gradient(100% 100% at 50% 0%, rgba(255, 184, 226, 0.51) 0%, rgba(255, 255, 255, 0) 100%), #FFFFFF'
+        const defaultLightGradient = 'linear-gradient(180deg, #E9FFDB 0%, rgba(255, 255, 255, 0.00) 100%), #FFF'
         const defaultDarkGradient = 'linear-gradient(180deg, #202738 0%, #070816 100%)'
         backgroundRadialGradientElement.style.background = darkMode ? defaultDarkGradient : defaultLightGradient
     }
