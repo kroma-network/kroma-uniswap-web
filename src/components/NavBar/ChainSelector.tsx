@@ -19,15 +19,19 @@ import * as styles from './ChainSelector.css'
 import ChainSelectorRow from './ChainSelectorRow'
 import { NavDropdown } from './NavDropdown'
 
-const NETWORK_SELECTOR_CHAINS = [
-  // SupportedChainId.MAINNET,
-  // SupportedChainId.POLYGON,
-  // SupportedChainId.OPTIMISM,
-  // SupportedChainId.ARBITRUM_ONE,
-  // SupportedChainId.CELO,
-  SupportedChainId.KROMA,
-  SupportedChainId.KROMA_DEPRECATED,
-]
+const isShowDeprecatedNetwork = new Date('2023-08-14T14:00:00') >= new Date()
+
+const NETWORK_SELECTOR_CHAINS = isShowDeprecatedNetwork
+  ? [
+      // SupportedChainId.MAINNET,
+      // SupportedChainId.POLYGON,
+      // SupportedChainId.OPTIMISM,
+      // SupportedChainId.ARBITRUM_ONE,
+      // SupportedChainId.CELO,
+      SupportedChainId.KROMA_DEPRECATED,
+      SupportedChainId.KROMA,
+    ]
+  : [SupportedChainId.KROMA]
 
 interface ChainSelectorProps {
   leftAlign?: boolean
